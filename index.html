@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QRegu — AI-Powered Regulatory Intelligence</title>
+<meta name="description" content="QRegu monitors regulations across Banking, Insurance, Fintech and Capital Markets. AI impact analysis, automated workflows, native mobile apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="images.js"></script>
+<style>
+:root{
+  --p:#7C3AED;--pl:#A78BFA;--pd:#5B21B6;--pb:#F5F3FF;--pbd:#DDD6FE;
+  --ink:#0A0A0F;--ink2:#18181B;--muted:#6B7280;--muted2:#9CA3AF;
+  --border:#E5E7EB;--surface:#F9FAFB;--white:#FFF;
+  --green:#059669;--gbg:#D1FAE5;--amber:#D97706;--abg:#FEF3C7;--red:#DC2626;--rbg:#FEE2E2;
+  --font:"Plus Jakarta Sans",sans-serif;
+  --r:14px;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);--shadowl:0 8px 32px rgba(0,0,0,.10),0 2px 8px rgba(0,0,0,.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;color:var(--ink);letter-spacing:-.3px}
+.nav-logo img{width:32px;height:32px;border-radius:8px}
+.nav-links{display:flex;gap:28px}
+.nav-link{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-link:hover{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-pill{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.lbtn{border:none;background:transparent;padding:5px 14px;font-family:var(--font);font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .15s}
+.lbtn.on{background:var(--p);color:white;border-radius:20px}
+.btn-cta{background:var(--p);color:white;border:none;padding:9px 20px;border-radius:10px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-cta:hover{background:var(--pd);transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:116px 48px 72px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--pb);border:1px solid var(--pbd);color:var(--pd);font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:22px}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+h1{font-size:clamp(34px,3.5vw,52px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:var(--ink);margin-bottom:18px}
+h1 em{font-style:normal;color:var(--p)}
+.hero-sub{font-size:17px;color:var(--muted);line-height:1.75;margin-bottom:32px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--p);color:white;padding:13px 24px;border-radius:12px;font-family:var(--font);font-size:15px;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--pd);transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,58,237,.3)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--ink);padding:13px 20px;border-radius:12px;font-family:var(--font);font-size:15px;font-weight:600;text-decoration:none;transition:all .2s;border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--p);color:var(--p)}
+.hero-stats{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--border)}
+.sn{font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.5px;display:block}
+.sl{font-size:12px;color:var(--muted);font-weight:500;margin-top:1px;display:block}
+
+/* DASHBOARD TABS */
+.db-tabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+.dbt{font-size:12px;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;border:none;background:transparent;color:var(--muted);font-family:var(--font);transition:all .15s}
+.dbt.on{background:var(--pb);color:var(--p)}
+.browser{background:white;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadowl);overflow:hidden}
+.bbar{background:#F3F4F6;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px}
+.bdots{display:flex;gap:6px}
+.bdot{width:10px;height:10px;border-radius:50%}
+.burl{flex:1;background:white;border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px;color:var(--muted)}
+.bimg{width:100%;display:block}
+
+/* SECTORS */
+.sectors-section{background:var(--ink2);padding:80px 48px}
+.sectors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#2D2D35;border-radius:16px;overflow:hidden;margin-top:48px}
+.sector-card{background:#1C1C24;padding:32px 28px;transition:background .2s}
+.sector-card:hover{background:#242430}
+.sector-icon{font-size:28px;margin-bottom:16px}
+.sector-title{font-size:16px;font-weight:700;color:white;margin-bottom:8px}
+.sector-desc{font-size:13px;color:#6B7280;line-height:1.6}
+.sector-regs{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
+.reg-chip{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(124,58,237,.15);color:var(--pl)}
+
+/* IMPACT SECTION */
+.impact-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:56px}
+.impact-screens{display:flex;flex-direction:column;gap:12px}
+.impact-img{border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadowl)}
+.impact-img img{width:100%;display:block}
+.impact-points{display:flex;flex-direction:column;gap:20px}
+.ip{display:flex;gap:14px;align-items:flex-start}
+.ip-icon{width:40px;height:40px;border-radius:10px;background:var(--pb);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ip-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ip-desc{font-size:14px;color:var(--muted);line-height:1.65}
+.ip-badge{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
+.badge-crit{background:var(--rbg);color:var(--red)}
+.badge-high{background:var(--abg);color:var(--amber)}
+.badge-med{background:#FEF9C3;color:#854D0E}
+
+/* DISCOVERY SECTION */
+.discovery-section{background:var(--surface);padding:96px 48px}
+.discovery-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:56px}
+.discovery-steps{display:flex;flex-direction:column;gap:4px}
+.ds{display:flex;gap:0;align-items:stretch}
+.ds-left{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0}
+.ds-num{width:32px;height:32px;border-radius:50%;background:var(--p);color:white;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ds-line{width:2px;background:var(--pbd);flex:1;margin:4px 0}
+.ds:last-child .ds-line{display:none}
+.ds-body{padding:0 0 24px 16px}
+.ds-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ds-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.ds-time{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--green);background:var(--gbg);padding:2px 10px;border-radius:20px}
+.discovery-visual{position:relative}
+.discovery-card{background:white;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+.dc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.dc-title{font-size:14px;font-weight:700;color:var(--ink)}
+.dc-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;background:var(--gbg);color:var(--green)}
+.dc-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.dc-row:last-child{border:none}
+.dc-label{font-size:13px;color:var(--muted)}
+.dc-value{font-size:13px;font-weight:600;color:var(--ink)}
+.dc-progress{height:6px;background:var(--surface);border-radius:3px;margin-top:16px;overflow:hidden}
+.dc-bar{height:100%;background:linear-gradient(90deg,var(--p),var(--pl));border-radius:3px;width:100%;animation:bar 2s ease infinite alternate}
+@keyframes bar{0%{width:40%}100%{width:100%}}
+
+/* WORKFLOW */
+.workflow-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;margin-top:56px}
+.wf-img{border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadowl)}
+.wf-img img{width:100%;display:block}
+.wf-steps{display:flex;flex-direction:column;gap:16px}
+.wfs{display:flex;gap:14px;align-items:flex-start;padding:18px;background:white;border:1px solid var(--border);border-radius:12px;transition:border-color .2s}
+.wfs:hover{border-color:var(--pbd)}
+.wfn{width:30px;height:30px;border-radius:8px;background:var(--p);color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wft{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.wfd{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* MOBILE */
+.mobile-section{background:var(--surface)}
+.mobile-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:56px}
+.phones{display:flex;gap:12px;justify-content:center;align-items:flex-end}
+.phone{border-radius:32px;overflow:hidden;border:6px solid var(--ink2);box-shadow:0 20px 48px rgba(0,0,0,.18);flex-shrink:0}
+.phone img{width:100%;display:block}
+.mobile-points{display:flex;flex-direction:column;gap:16px}
+.mp{display:flex;gap:12px;align-items:flex-start;padding:16px;background:white;border:1px solid var(--border);border-radius:12px}
+.mpi{font-size:18px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--pb);border-radius:8px;flex-shrink:0}
+.mpt{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.mpd{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* RISK SECTION */
+.risk-section{background:linear-gradient(135deg,#1A0533 0%,#2D1060 50%,#3B1585 100%);padding:80px 48px}
+.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.risk-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 24px;text-align:center}
+.risk-num{font-size:40px;font-weight:800;color:white;letter-spacing:-1px;display:block;margin-bottom:8px}
+.risk-num span{color:var(--pl)}
+.risk-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.pc{border:1.5px solid var(--border);border-radius:20px;padding:30px 26px;background:white;position:relative;transition:box-shadow .2s}
+.pc:hover{box-shadow:var(--shadow)}
+.pc.feat{border-color:var(--p);background:var(--pb)}
+.flabel{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--p);color:white;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;white-space:nowrap}
+.ptier{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.pamount{font-size:38px;font-weight:800;color:var(--ink);letter-spacing:-1px;line-height:1}
+.pamount sup{font-size:18px;vertical-align:top;margin-top:8px;display:inline-block}
+.pperiod{font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:22px}
+.plist{list-style:none;margin-bottom:24px}
+.plist li{font-size:14px;color:var(--ink);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.plist li::before{content:"\2713";color:var(--p);font-weight:700;flex-shrink:0}
+.pbtn{display:block;text-align:center;padding:11px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;font-family:var(--font);border:none;cursor:pointer;width:100%}
+.pbtn.fill{background:var(--p);color:white}.pbtn.fill:hover{background:var(--pd)}
+.pbtn.outline{background:white;color:var(--ink);border:1.5px solid var(--border)}.pbtn.outline:hover{border-color:var(--p);color:var(--p)}
+
+/* CTA */
+.cta-wrap{background:linear-gradient(135deg,#4C1D95,#6D28D9,#7C3AED);text-align:center;padding:96px 48px}
+.cta-wrap h2{color:white;font-size:clamp(28px,3vw,42px);font-weight:800;letter-spacing:-1px;margin-bottom:14px}
+.cta-sub{font-size:17px;color:rgba(255,255,255,.7);margin:0 auto 36px;max-width:480px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:var(--ink2);padding:40px 48px}
+.fi{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.flogo{font-size:16px;font-weight:800;color:white;display:flex;align-items:center;gap:8px}
+.flogo img{width:26px;height:26px;border-radius:6px}
+.fcopy{font-size:13px;color:#4B5563}
+.flinks{display:flex;gap:20px}
+.flinks a{font-size:13px;color:#4B5563;text-decoration:none;transition:color .2s}
+.flinks a:hover{color:white}
+
+/* UTILS */
+section{padding:96px 48px}
+.container{max-width:1280px;margin:0 auto}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--p);margin-bottom:12px}
+.s-title{font-size:clamp(26px,2.5vw,38px);font-weight:800;letter-spacing:-1px;color:var(--ink);line-height:1.2;margin-bottom:12px}
+.s-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.75}
+.s-title-w{color:white}
+.eyebrow-w{color:var(--pl)}
+
+/* LANG */
+[data-l]{display:none}[data-l].on{display:block !important}
+.hero-stats [data-l].on{display:block !important;font-size:12px;color:var(--muted);font-weight:500;margin-top:1px}
+
+@media(max-width:1024px){
+  .hero,.impact-layout,.discovery-layout,.workflow-layout,.mobile-layout{grid-template-columns:1fr;gap:40px}
+  .hero{padding:100px 24px 64px}.hero-visual{order:-1}
+  .sectors-grid{grid-template-columns:1fr 1fr}
+  .risk-grid,.pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
+  section{padding:64px 24px}
+  .nav{padding:0 20px}.nav-links{display:none}
+  .phones .phone{width:150px}
+  .sectors-section,.risk-section,.cta-wrap,.discovery-section{padding:64px 24px}
+  footer{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><img id="nav-logo" src="" alt="QRegu">QRegu</a>
+  <div class="nav-links">
+    <a href="#sectors" class="nav-link"><span data-l="en" class="on">Sectors</span><span data-l="tr">Sekt&ouml;rler</span></a>
+    <a href="#impact" class="nav-link"><span data-l="en" class="on">Impact Analysis</span><span data-l="tr">Etki Analizi</span></a>
+    <a href="#discovery" class="nav-link"><span data-l="en" class="on">AI Discovery</span><span data-l="tr">AI Ke&#351;if</span></a>
+    <a href="#pricing" class="nav-link"><span data-l="en" class="on">Pricing</span><span data-l="tr">Fiyatlar</span></a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-pill">
+      <button class="lbtn on" id="ben" onclick="setLang('en')">EN</button>
+      <button class="lbtn" id="btr" onclick="setLang('tr')">TR</button>
+    </div>
+    <a href="https://calendly.com/berker-yenal-qberx/30min" target="_blank" class="btn-cta">
+      &#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1280px;margin:0 auto;padding:116px 48px 72px;display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center" class="hero-wrap">
+  <div>
+    <div class="hero-badge"><div class="live-dot"></div><span data-l="en" class="on">TR + UK live &mdash; SEC &amp; FINRA coming</span><span data-l="tr">TR + UK canl&#305; &mdash; SEC &amp; FINRA geliyor</span></div>
+    <h1><span data-l="en" class="on">Regulatory intelligence,<br><em>automated end-to-end</em></span><span data-l="tr">Mevzuat zekasi,<br><em>u&ccedil;tan uca otomatik</em></span></h1>
+    <p class="hero-sub"><span data-l="en" class="on">QRegu monitors regulations across Banking, Insurance, Fintech and Capital Markets. AI reads every update, scores the impact, and routes tasks to the right team &mdash; automatically.</span><span data-l="tr">QRegu Bankacılık, Sigorta, Fintech ve Sermaye Piyasaları genelinde mevzuatları izler. AI her güncellemeyi okur, etkiyi değerlendirir ve görevleri otomatik yönlendirir.</span></p>
+    <div class="hero-btns">
+      <a href="https://calendly.com/berker-yenal-qberx/30min" class="btn-primary" target="_blank">&#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
+      <a href="https://qregu-admin-dev.web.app" class="btn-ghost" target="_blank"><span data-l="en" class="on">Live Admin Panel &rarr;</span><span data-l="tr">Canl&#305; Admin &rarr;</span></a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="sn">2 min</span><span id="s1en" data-l="en">New regulator setup</span><span id="s1tr" data-l="tr">Yeni regulat&ouml;r kurulumu</span></div>
+      <div><span class="sn">87%</span><span id="s2en" data-l="en">Compliance time saved</span><span id="s2tr" data-l="tr">Uyum s&uuml;resi tasarrufu</span></div>
+      <div><span class="sn">10+</span><span id="s3en" data-l="en">Live regulators</span><span id="s3tr" data-l="tr">Canl&#305; regulat&ouml;r</span></div>
+      <div><span class="sn">$99</span><span id="s4en" data-l="en">Starting / month</span><span id="s4tr" data-l="tr">Ba&#351;lang&#305;&ccedil; / ay</span></div>
+    </div>
+  </div>
+  <div>
+    <div class="db-tabs">
+      <button class="dbt on" onclick="sw('impact_list','qregu-admin-dev.web.app/impact-reports')"><span data-l="en" class="on">Impact Reports</span><span data-l="tr">Etki Raporlar&#305;</span></button>
+      <button class="dbt" onclick="sw('impact_detail','qregu-admin-dev.web.app/impact-reports/detail')"><span data-l="en" class="on">Impact Detail</span><span data-l="tr">Etki Detay&#305;</span></button>
+      <button class="dbt" onclick="sw('sources','qregu-admin-dev.web.app/sources')">Sources</button>
+      <button class="dbt" onclick="sw('builder','qregu-admin-dev.web.app/workflows/builder')">Workflow Builder</button>
+    </div>
+    <div class="browser">
+      <div class="bbar">
+        <div class="bdots"><div class="bdot" style="background:#FF5F56"></div><div class="bdot" style="background:#FFBD2E"></div><div class="bdot" style="background:#27C93F"></div></div>
+        <div class="burl" id="burl">qregu-admin-dev.web.app/impact-reports</div>
+      </div>
+      <img id="dbimg" class="bimg" src="" alt="QRegu Dashboard">
+    </div>
+  </div>
+</div>
+
+<!-- LOGOS BAR -->
+<div style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 48px">
+  <div style="text-align:center;font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">
+    <span data-l="en" class="on">Live regulatory monitoring</span><span data-l="tr">Canl&#305; mevzuat izleme</span>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap">
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>BDDK</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>SPK</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>TCMB</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>MASAK</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>KAP</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>FCA</span>
+    <span style="font-size:13px;font-weight:700;color:#C4C9D4">SEC &rarr;</span>
+    <span style="font-size:13px;font-weight:700;color:#C4C9D4">FINRA &rarr;</span>
+    <span style="font-size:13px;font-weight:700;color:#C4C9D4">BaFin &rarr;</span>
+  </div>
+</div>
+
+<!-- SECTORS -->
+<div class="sectors-section" id="sectors">
+  <div class="container">
+    <div class="eyebrow eyebrow-w"><span data-l="en" class="on">Sectors</span><span data-l="tr">Sekt&ouml;rler</span></div>
+    <h2 class="s-title s-title-w"><span data-l="en" class="on">Built for every regulated financial sector</span><span data-l="tr">Her d&uuml;zenlenmi&#351; finans sekt&ouml;r&uuml; i&ccedil;in</span></h2>
+    <p class="s-sub" style="color:#6B7280"><span data-l="en" class="on">QRegu covers the full spectrum of financial regulation. One platform, all sectors.</span><span data-l="tr">QRegu finansal mevzuatın tüm yelpazesini kapsıyor. Tek platform, tüm sektörler.</span></p>
+    <div class="sectors-grid">
+      <div class="sector-card">
+        <div class="sector-icon">&#x1F3E6;</div>
+        <div class="sector-title"><span data-l="en" class="on">Banking</span><span data-l="tr">Bankac&#305;l&#305;k</span></div>
+        <p class="sector-desc"><span data-l="en" class="on">Capital adequacy, AML/KYC, consumer credit, payment systems, fee &amp; tariff regulations.</span><span data-l="tr">Sermaye yeterliliği, AML/KYC, tüketici kredisi, ödeme sistemleri, ücret ve tarife düzenlemeleri.</span></p>
+        <div class="sector-regs"><span class="reg-chip">BDDK</span><span class="reg-chip">TCMB</span><span class="reg-chip">MASAK</span><span class="reg-chip">SEC</span></div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">&#x1F4C8;</div>
+        <div class="sector-title"><span data-l="en" class="on">Capital Markets</span><span data-l="tr">Sermaye Piyasalar&#305;</span></div>
+        <p class="sector-desc"><span data-l="en" class="on">Securities disclosure, investment fund rules, public offering regulations, KAP filings.</span><span data-l="tr">Menkul kıymet kamuoyunu aydınlatma, yatırım fonu kuralları, halka arz düzenlemeleri, KAP bildirimleri.</span></p>
+        <div class="sector-regs"><span class="reg-chip">SPK</span><span class="reg-chip">KAP</span><span class="reg-chip">FINRA</span><span class="reg-chip">FCA</span></div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">&#x1F4B3;</div>
+        <div class="sector-title"><span data-l="en" class="on">Fintech &amp; Payments</span><span data-l="tr">Fintech &amp; &Ouml;demeler</span></div>
+        <p class="sector-desc"><span data-l="en" class="on">E-money licenses, payment institution rules, contactless limits, open banking compliance.</span><span data-l="tr">E-para lisansları, ödeme kuruluşu kuralları, temassız limitler, açık bankacılık uyumu.</span></p>
+        <div class="sector-regs"><span class="reg-chip">TCMB</span><span class="reg-chip">BDDK</span><span class="reg-chip">FCA</span><span class="reg-chip">MAS</span></div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">&#x1F6E1;&#xFE0F;</div>
+        <div class="sector-title"><span data-l="en" class="on">Insurance</span><span data-l="tr">Sigorta</span></div>
+        <p class="sector-desc"><span data-l="en" class="on">Solvency requirements, product approval, claim handling rules, consumer protection.</span><span data-l="tr">Ödeme gücü gereksinimleri, ürün onayı, hasar işleme kuralları, tüketici koruması.</span></p>
+        <div class="sector-regs"><span class="reg-chip">BDDK</span><span class="reg-chip">TSB</span><span class="reg-chip">EIOPA</span><span class="reg-chip">FCA</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMPACT ANALYSIS -->
+<section id="impact">
+<div class="container">
+  <div class="eyebrow"><span data-l="en" class="on">AI Impact Analysis</span><span data-l="tr">AI Etki Analizi</span></div>
+  <h2 class="s-title"><span data-l="en" class="on">Regulation published &rarr; impact scored<br>in seconds, not days</span><span data-l="tr">Mevzuat yay&#305;nland&#305; &rarr; etki saniyeler<br>i&ccedil;inde analiz edildi</span></h2>
+  <p class="s-sub"><span data-l="en" class="on">AI reads every regulation and produces a full impact report: severity score, affected departments, required actions, estimated effort, and deadlines.</span><span data-l="tr">AI her mevzuatı okuyarak tam etki raporu üretir: önem skoru, etkilenen departmanlar, gerekli aksiyonlar, tahmini efor ve son tarihler.</span></p>
+  <div class="impact-layout">
+    <div class="impact-screens">
+      <div class="impact-img"><img id="impact-list-img" src="" alt="Impact Reports List"></div>
+      <div class="impact-img" style="margin-top:0"><img id="impact-detail-img" src="" alt="Impact Report Detail"></div>
+    </div>
+    <div class="impact-points">
+      <div class="ip">
+        <div class="ip-icon">&#x1F3AF;</div>
+        <div>
+          <div class="ip-title"><span data-l="en" class="on">Automatic severity scoring</span><span data-l="tr">Otomatik &ouml;nem skorlamas&#305;</span></div>
+          <div class="ip-desc"><span data-l="en" class="on">Every regulation gets scored: Critical, High, Medium, or Low. No more manual triage. Your team focuses on what matters.</span><span data-l="tr">Her mevzuat skorlanır: Kritik, Yüksek, Orta veya Düşük. Manuel değerlendirme yok. Ekibiniz önemli olana odaklanır.</span></div>
+          <div style="display:flex;gap:6px;margin-top:10px"><span class="ip-badge badge-crit">Kritik</span><span class="ip-badge badge-high" style="background:var(--abg);color:var(--amber)">Y&uuml;ksek</span><span class="ip-badge" style="background:#FEF9C3;color:#854D0E">Orta</span></div>
+        </div>
+      </div>
+      <div class="ip">
+        <div class="ip-icon">&#x1F3DB;&#xFE0F;</div>
+        <div>
+          <div class="ip-title"><span data-l="en" class="on">Department-level impact mapping</span><span data-l="tr">Departman bazl&#305; etki haritas&#305;</span></div>
+          <div class="ip-desc"><span data-l="en" class="on">AI identifies which departments are affected: Legal, Compliance, IT, Finance, Operations, Call Center. Assigns effort estimates per team.</span><span data-l="tr">AI hangi departmanların etkilendiğini belirler: Hukuk, Uyum, BT, Finans, Operasyon, Çağrı Merkezi. Her ekip için efor tahmini atar.</span></div>
+        </div>
+      </div>
+      <div class="ip">
+        <div class="ip-icon">&#x2705;</div>
+        <div>
+          <div class="ip-title"><span data-l="en" class="on">AI-generated action list</span><span data-l="tr">AI taraf&#305;ndan &uuml;retilen aksiyon listesi</span></div>
+          <div class="ip-desc"><span data-l="en" class="on">Up to 12 specific actions per regulation: contract changes, system updates, customer communications, regulatory filings &mdash; all pre-generated.</span><span data-l="tr">Mevzuat başına 12 spesifik aksiyon: sözleşme değişiklikleri, sistem güncellemeleri, müşteri bildirimleri, regülatif raporlamalar &mdash; hepsi önceden üretilmiş.</span></div>
+        </div>
+      </div>
+      <div class="ip">
+        <div class="ip-icon">&#x23F1;&#xFE0F;</div>
+        <div>
+          <div class="ip-title"><span data-l="en" class="on">Effort estimation &amp; deadlines</span><span data-l="tr">Efor tahmini &amp; son tarihler</span></div>
+          <div class="ip-desc"><span data-l="en" class="on">AI calculates required effort in working days and extracts compliance deadlines from regulation text automatically.</span><span data-l="tr">AI gerekli eforu iş günü olarak hesaplar ve uyum son tarihlerini mevzuat metninden otomatik çıkarır.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- AI DISCOVERY -->
+<div class="discovery-section" id="discovery">
+<div class="container">
+  <div class="eyebrow"><span data-l="en" class="on">AI Discovery Agent</span><span data-l="tr">AI Ke&#351;if Ajan&#305;</span></div>
+  <h2 class="s-title"><span data-l="en" class="on">Add any regulator in the world<br>in under 2 minutes</span><span data-l="tr">D&uuml;nyadaki herhangi bir regulat&ouml;r&uuml;<br>2 dakikadan k&#305;sa s&uuml;rede ekleyin</span></h2>
+  <p class="s-sub"><span data-l="en" class="on">Competitors need 2&ndash;4 weeks of development per country. QRegu&rsquo;s AI Discovery Agent analyzes any regulatory website automatically &mdash; no developer required.</span><span data-l="tr">Rakipler her ülke için 2&ndash;4 hafta geliştirme ister. QRegu'nun AI Discovery Agent'ı herhangi bir mevzuat sitesini otomatik analiz eder &mdash; geliştirici gerekmez.</span></p>
+  <div class="discovery-layout">
+    <div class="discovery-steps">
+      <div class="ds"><div class="ds-left"><div class="ds-num">1</div><div class="ds-line"></div></div><div class="ds-body"><div class="ds-title"><span data-l="en" class="on">Enter country + sector</span><span data-l="tr">&#220;lke + sekt&ouml;r girin</span></div><div class="ds-desc"><span data-l="en" class="on">Type "Germany, Banking" or "Singapore, Fintech". AI searches and finds the relevant regulatory authority automatically.</span><span data-l="tr">"Almanya, Bankacılık" veya "Singapur, Fintech" yazın. AI otomatik olarak ilgili düzenleyici kurumu bulur.</span></div></div></div>
+      <div class="ds"><div class="ds-left"><div class="ds-num">2</div><div class="ds-line"></div></div><div class="ds-body"><div class="ds-title"><span data-l="en" class="on">AI analyzes website structure</span><span data-l="tr">AI site yap&#305;s&#305;n&#305; analiz eder</span></div><div class="ds-desc"><span data-l="en" class="on">AI detects HTML structure, RSS feeds, and API endpoints. Generates CSS selectors and extraction rules automatically.</span><span data-l="tr">AI HTML yapısını, RSS beslemelerini ve API uç noktalarını tespit eder. CSS seçicileri ve çıkarma kurallarını otomatik üretir.</span></div></div></div>
+      <div class="ds"><div class="ds-left"><div class="ds-num">3</div><div class="ds-line"></div></div><div class="ds-body"><div class="ds-title"><span data-l="en" class="on">Preview &amp; activate</span><span data-l="tr">&Ouml;nizle &amp; etkinle&#351;tir</span></div><div class="ds-desc"><span data-l="en" class="on">Test the fetch before going live. One click to activate &mdash; regulations start flowing immediately.</span><span data-l="tr">Canlıya geçmeden önce çekimi test edin. Bir tıkla etkinleştirin &mdash; mevzuatlar hemen akmaya başlar.</span></div><div class="ds-time"><span data-l="en" class="on">&#60; 2 minutes total</span><span data-l="tr">Toplam &#60; 2 dakika</span></div></div></div>
+    </div>
+    <div class="discovery-visual">
+      <div class="discovery-card">
+        <div class="dc-header"><div class="dc-title">&#x1F916; <span data-l="en" class="on">AI Discovery &mdash; In Progress</span><span data-l="tr">AI Ke&#351;if &mdash; Devam Ediyor</span></div><div class="dc-badge"><span data-l="en" class="on">Live</span><span data-l="tr">Canl&#305;</span></div></div>
+        <div class="dc-row"><span class="dc-label"><span data-l="en" class="on">Target</span><span data-l="tr">Hedef</span></span><span class="dc-value">BaFin &mdash; Germany</span></div>
+        <div class="dc-row"><span class="dc-label"><span data-l="en" class="on">Sector</span><span data-l="tr">Sekt&ouml;r</span></span><span class="dc-value">Banking &amp; Finance</span></div>
+        <div class="dc-row"><span class="dc-label"><span data-l="en" class="on">Type detected</span><span data-l="tr">Tespit edilen tip</span></span><span class="dc-value">RSS + HTML Crawler</span></div>
+        <div class="dc-row"><span class="dc-label"><span data-l="en" class="on">Regulations found</span><span data-l="tr">Bulunan mevzuat</span></span><span class="dc-value" style="color:var(--green)">247</span></div>
+        <div style="margin-top:16px;font-size:12px;color:var(--muted);margin-bottom:6px"><span data-l="en" class="on">Analyzing structure&hellip;</span><span data-l="tr">Yap&#305; analiz ediliyor&hellip;</span></div>
+        <div class="dc-progress"><div class="dc-bar"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- WORKFLOW -->
+<section>
+<div class="container">
+  <div class="eyebrow"><span data-l="en" class="on">Workflow Automation</span><span data-l="tr">&#304;&#351; Ak&#305;&#351;&#305; Otomasyonu</span></div>
+  <h2 class="s-title"><span data-l="en" class="on">From detection to closed task,<br>zero manual steps</span><span data-l="tr">Tesptten kapal&#305; goreve,<br>s&#305;f&#305;r manuel ad&#305;m</span></h2>
+  <div class="workflow-layout">
+    <div class="wf-img"><img id="wf-img" src="" alt="Workflow Builder"></div>
+    <div class="wf-steps">
+      <div class="wfs"><div class="wfn">1</div><div><div class="wft"><span data-l="en" class="on">New regulation triggers workflow</span><span data-l="tr">Yeni mevzuat i&#351; ak&#305;&#351;&#305;n&#305; tetikler</span></div><div class="wfd"><span data-l="en" class="on">The moment a regulation is published, your custom workflow activates automatically.</span><span data-l="tr">Mevzuat yayınlandığı anda özel iş akışınız otomatik devreye girer.</span></div></div></div>
+      <div class="wfs"><div class="wfn">2</div><div><div class="wft"><span data-l="en" class="on">AI runs impact analysis</span><span data-l="tr">AI etki analizi yap&#305;yor</span></div><div class="wfd"><span data-l="en" class="on">Severity scored, departments identified, actions listed &mdash; in seconds.</span><span data-l="tr">Önem skorlandı, departmanlar belirlendi, aksiyonlar listelendi &mdash; saniyeler içinde.</span></div></div></div>
+      <div class="wfs"><div class="wfn">3</div><div><div class="wft"><span data-l="en" class="on">Tasks auto-created &amp; assigned</span><span data-l="tr">G&ouml;revler otomatik olu&#351;turuldu &amp; atand&#305;</span></div><div class="wfd"><span data-l="en" class="on">RACI roles assigned, deadlines set, teams notified on mobile instantly.</span><span data-l="tr">RACI rolleri atandı, son tarihler belirlendi, ekipler mobilden anında bildirim aldı.</span></div></div></div>
+      <div class="wfs"><div class="wfn">4</div><div><div class="wft"><span data-l="en" class="on">Evidence collected &amp; workflow closes</span><span data-l="tr">Kan&#305;t topland&#305; &amp; i&#351; ak&#305;&#351;&#305; kapand&#305;</span></div><div class="wfd"><span data-l="en" class="on">Full audit trail maintained. Compliance proved with evidence. Regulators satisfied.</span><span data-l="tr">Tam denetim izi tutuldu. Uyum kanıtlarla ispat edildi. Düzenleyiciler tatmin oldu.</span></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- MOBILE -->
+<section class="mobile-section">
+<div class="container">
+  <div class="mobile-layout">
+    <div>
+      <div class="eyebrow"><span data-l="en" class="on">Mobile App</span><span data-l="tr">Mobil Uygulama</span></div>
+      <h2 class="s-title"><span data-l="en" class="on">Compliance in your pocket</span><span data-l="tr">Uyum cebinizde</span></h2>
+      <p class="s-sub"><span data-l="en" class="on">Native iOS &amp; Android. Push notifications, task management, Kanban board, and compliance tracking from anywhere.</span><span data-l="tr">Native iOS ve Android. Anlık bildirimler, görev yönetimi, Kanban panosu ve uyum takibi, her yerden.</span></p>
+      <div class="mobile-points" style="margin-top:28px">
+        <div class="mp"><div class="mpi">&#x1F514;</div><div><div class="mpt"><span data-l="en" class="on">Instant push notifications</span><span data-l="tr">Anl&#305;k push bildirimleri</span></div><div class="mpd"><span data-l="en" class="on">Critical regulations alert your phone instantly, filtered by sector and priority.</span><span data-l="tr">Kritik mevzuatlar sektör ve önceliğe göre filtrelenerek anında telefonunuza ulaşır.</span></div></div></div>
+        <div class="mp"><div class="mpi">&#x1F4CB;</div><div><div class="mpt"><span data-l="en" class="on">Kanban board &amp; task detail</span><span data-l="tr">Kanban panosu &amp; g&ouml;rev detay&#305;</span></div><div class="mpd"><span data-l="en" class="on">Full RACI workflow, approval chains, and evidence upload from your phone.</span><span data-l="tr">Tam RACI iş akışı, onay zincirleri ve kanıt yükleme telefonunuzdan.</span></div></div></div>
+        <div class="mp"><div class="mpi">&#x1F4C5;</div><div><div class="mpt"><span data-l="en" class="on">Compliance calendar</span><span data-l="tr">Uyum takvimi</span></div><div class="mpd"><span data-l="en" class="on">All deadlines in one view. Sync to device calendar with one tap.</span><span data-l="tr">Tüm son tarihler tek görünümde. Bir dokunuşla cihaz takvimiyle senkronize edin.</span></div></div></div>
+      </div>
+    </div>
+    <div class="phones" id="phones"></div>
+  </div>
+</div>
+</section>
+
+<!-- RISK -->
+<div class="risk-section">
+<div class="container">
+  <div class="eyebrow eyebrow-w" style="text-align:center"><span data-l="en" class="on">Why compliance matters now</span><span data-l="tr">Neden uyum &#351;imdi &ouml;nemli</span></div>
+  <h2 class="s-title s-title-w" style="text-align:center;max-width:600px;margin:0 auto 12px"><span data-l="en" class="on">TCMB 2025: The cost of missing a regulation</span><span data-l="tr">TCMB 2025: Bir mevzuat&#305; ka&ccedil;&#305;rman&#305;n bedeli</span></h2>
+  <div class="risk-grid">
+    <div class="risk-card"><span class="risk-num">7</span><div class="risk-desc"><span data-l="en" class="on">Financial institutions had their <strong>operating license revoked</strong> in 2025 for non-compliance.</span><span data-l="tr">2025 yılında uyumsuzluk nedeniyle <strong>faaliyet izni iptal edilen</strong> kuruluş sayısı.</span></div></div>
+    <div class="risk-card"><span class="risk-num">14</span><div class="risk-desc"><span data-l="en" class="on">Institutions received <strong>temporary license suspension</strong> during regulatory review.</span><span data-l="tr">Denetim sürecinde <strong>geçici lisans askıya alınan</strong> kuruluş sayısı.</span></div></div>
+    <div class="risk-card"><span class="risk-num">&#x20BA;<span style="font-size:28px">373M</span></span><div class="risk-desc"><span data-l="en" class="on">Total <strong>regulatory fines</strong> issued across 72 institutions by TCMB in a single year.</span><span data-l="tr">TCMB'nin tek bir yılda 72 kuruluşa uyguladığı toplam <strong>idari para cezası</strong>.</span></div></div>
+  </div>
+</div>
+</div>
+
+<!-- PRICING -->
+<section id="pricing">
+<div class="container">
+  <div class="eyebrow">Pricing</div>
+  <h2 class="s-title"><span data-l="en" class="on">90% less than legacy tools.</span><span data-l="tr">Eski ara&ccedil;lardan %90 daha ucuz.</span></h2>
+  <p class="s-sub"><span data-l="en" class="on">Traditional RegTech platforms charge $10K&ndash;50K/year. QRegu starts at $99/month and goes live in days.</span><span data-l="tr">Geleneksel RegTech platformları yılda $10K&ndash;50K alır. QRegu $99/ay'dan başlar ve günler içinde devreye alınır.</span></p>
+  <div class="pricing-grid">
+    <div class="pc">
+      <div class="ptier">Starter</div>
+      <div class="pamount"><sup>$</sup>99</div>
+      <div class="pperiod"><span data-l="en" class="on">per month</span><span data-l="tr">ayl&#305;k</span></div>
+      <ul class="plist"><li><span data-l="en" class="on">Up to 10 users</span><span data-l="tr">10 kullan&#305;c&#305;</span></li><li><span data-l="en" class="on">1 country</span><span data-l="tr">1 &uuml;lke</span></li><li><span data-l="en" class="on">AI summaries</span><span data-l="tr">AI &ouml;zetleri</span></li><li><span data-l="en" class="on">Mobile apps</span><span data-l="tr">Mobil uygulamalar</span></li><li><span data-l="en" class="on">Basic workflows</span><span data-l="tr">Temel i&#351; ak&#305;&#351;lar&#305;</span></li></ul>
+      <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn outline" target="_blank"><span data-l="en" class="on">Get Started</span><span data-l="tr">Ba&#351;la</span></a>
+    </div>
+    <div class="pc feat">
+      <div class="flabel">Most Popular</div>
+      <div class="ptier">Professional</div>
+      <div class="pamount"><sup>$</sup>299</div>
+      <div class="pperiod"><span data-l="en" class="on">per month</span><span data-l="tr">ayl&#305;k</span></div>
+      <ul class="plist"><li><span data-l="en" class="on">Up to 50 users</span><span data-l="tr">50 kullan&#305;c&#305;</span></li><li><span data-l="en" class="on">3 countries</span><span data-l="tr">3 &uuml;lke</span></li><li><span data-l="en" class="on">AI impact analysis</span><span data-l="tr">AI etki analizi</span></li><li><span data-l="en" class="on">Full workflow automation</span><span data-l="tr">Tam i&#351; ak&#305;&#351;&#305; otomasyonu</span></li><li><span data-l="en" class="on">B2B dashboard</span><span data-l="tr">B2B dashboard</span></li><li><span data-l="en" class="on">Priority support</span><span data-l="tr">&Ouml;ncelikli destek</span></li></ul>
+      <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn fill" target="_blank"><span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
+    </div>
+    <div class="pc">
+      <div class="ptier">Enterprise</div>
+      <div class="pamount" style="font-size:32px;padding-top:6px">Custom</div>
+      <div class="pperiod"><span data-l="en" class="on">tailored pricing</span><span data-l="tr">&ouml;zel fiyatland&#305;rma</span></div>
+      <ul class="plist"><li><span data-l="en" class="on">Unlimited users</span><span data-l="tr">S&#305;n&#305;rs&#305;z kullan&#305;c&#305;</span></li><li><span data-l="en" class="on">All countries</span><span data-l="tr">T&uuml;m &uuml;lkeler</span></li><li><span data-l="en" class="on">White-label option</span><span data-l="tr">White-label</span></li><li><span data-l="en" class="on">On-premise deploy</span><span data-l="tr">On-premise</span></li><li><span data-l="en" class="on">SLA guarantee</span><span data-l="tr">SLA garantisi</span></li></ul>
+      <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn outline" target="_blank"><span data-l="en" class="on">Contact Sales</span><span data-l="tr">Sat&#305;&#351; Ekibi</span></a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <h2><span data-l="en" class="on">Ready to see QRegu live?</span><span data-l="tr">QRegu'yu canl&#305; g&ouml;rmeye haz&#305;r m&#305;s&#305;n&#305;z?</span></h2>
+    <p class="cta-sub"><span data-l="en" class="on">Book a 30-minute demo. We'll show your regulators being monitored live.</span><span data-l="tr">30 dakikalık demo rezervasyonu yapın. Regulatörlerinizin canlı izlendiğini gösterelim.</span></p>
+    <div class="cta-btns">
+      <a href="https://calendly.com/berker-yenal-qberx/30min" class="btn-primary" target="_blank" style="background:white;color:var(--p);font-size:15px;padding:14px 28px">&#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
+      <a href="https://qregu-admin-dev.web.app" class="btn-ghost" target="_blank" style="background:rgba(255,255,255,.12);color:white;border-color:rgba(255,255,255,.3);font-size:15px;padding:14px 22px"><span data-l="en" class="on">Live Admin Panel &rarr;</span><span data-l="tr">Canl&#305; Admin &rarr;</span></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="fi">
+    <div class="flogo"><img id="footer-logo" src="" alt="QRegu">QRegu</div>
+    <span class="fcopy">&copy; 2026 QRegu by Qberx Technology</span>
+    <div class="flinks"><a href="mailto:info@qberx.com">Contact</a><a href="https://qregu-admin-dev.web.app" target="_blank">Admin Panel</a><a href="https://qberx.com" target="_blank">Qberx.com</a></div>
+  </div>
+</footer>
+
+<script>
+function setLang(l){
+  document.querySelectorAll('[data-l]').forEach(function(e){e.classList.toggle('on',e.getAttribute('data-l')===l);});
+  document.getElementById('ben').classList.toggle('on',l==='en');
+  document.getElementById('btr').classList.toggle('on',l==='tr');
+}
+
+var screens={
+  impact_list:{img:function(){return IMG_IMPACT_LIST;},url:'qregu-admin-dev.web.app/impact-reports'},
+  impact_detail:{img:function(){return IMG_IMPACT_DETAIL;},url:'qregu-admin-dev.web.app/impact-reports/detail'},
+  sources:{img:function(){return IMG_ADMIN_SOURCES;},url:'qregu-admin-dev.web.app/sources'},
+  builder:{img:function(){return IMG_WORKFLOW_BUILDER;},url:'qregu-admin-dev.web.app/workflows/builder'}
+};
+
+function sw(name,url){
+  var keys=Object.keys(screens);
+  document.querySelectorAll('.dbt').forEach(function(t,i){t.classList.toggle('on',keys[i]===name);});
+  document.getElementById('dbimg').src=screens[name].img();
+  document.getElementById('burl').textContent=screens[name].url;
+}
+
+function init(){
+  document.getElementById('nav-logo').src=IMG_LOGO;
+  document.getElementById('footer-logo').src=IMG_LOGO;
+  document.getElementById('impact-list-img').src=IMG_IMPACT_LIST;
+  document.getElementById('impact-detail-img').src=IMG_IMPACT_DETAIL;
+  document.getElementById('wf-img').src=IMG_WORKFLOW_BUILDER;
+  sw('impact_list');
+  // phones
+  var ph=document.getElementById('phones');
+  var imgs=[IMG_MOBILE_HOME,IMG_MOBILE_MENU,IMG_MOBILE_TASK];
+  var ws=['180px','200px','180px'];
+  var mt=['0px','0px','-20px'];
+  ph.innerHTML=imgs.map(function(s,i){return '<div class="phone" style="width:'+ws[i]+';margin-top:'+mt[i]+'"><img src="'+s+'" alt="QRegu mobile"></div>';}).join('');
+  setLang('en');
+}
+init();
+</script>
+</body>
+</html>
