@@ -3,11 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QRegu — AI-Powered Regulatory Intelligence</title>
-<meta name="description" content="QRegu monitors regulations across Banking, Insurance, Fintech and Capital Markets. AI impact analysis, automated workflows, native mobile apps.">
+<title>QRegu — AI-Powered Regulatory Intelligence Platform</title>
+<meta name="description" content="QRegu monitors regulations across Banking, Insurance, Fintech and Capital Markets. AI impact analysis, automated workflows, native mobile apps. Track BDDK, SPK, TCMB, MASAK, FCA regulations.">
+<meta name="keywords" content="QRegu, regulatory compliance, RegTech, AI compliance, BDDK, SPK, TCMB, MASAK, FCA, regulation monitoring, compliance automation, regulatory intelligence">
+<meta name="author" content="QBERX">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://qregu.com/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://qregu.com/">
+<meta property="og:title" content="QRegu — AI-Powered Regulatory Intelligence Platform">
+<meta property="og:description" content="Monitor regulations across Banking, Insurance, Fintech and Capital Markets. AI impact analysis, automated workflows, native mobile apps.">
+<meta property="og:image" content="https://qregu.com/images/logo.png">
+<meta property="og:site_name" content="QRegu">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://qregu.com/">
+<meta name="twitter:title" content="QRegu — AI-Powered Regulatory Intelligence Platform">
+<meta name="twitter:description" content="Monitor regulations across Banking, Insurance, Fintech and Capital Markets. AI impact analysis, automated workflows.">
+<meta name="twitter:image" content="https://qregu.com/images/logo.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="apple-touch-icon" href="images/logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="images.js"></script>
 <style>
 :root{
   --p:#7C3AED;--pl:#A78BFA;--pd:#5B21B6;--pb:#F5F3FF;--pbd:#DDD6FE;
@@ -204,6 +227,29 @@ section{padding:96px 48px}
   footer{padding:32px 24px}
 }
 </style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "QRegu",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web, iOS, Android",
+  "description": "AI-powered regulatory intelligence platform for Banking, Insurance, Fintech and Capital Markets",
+  "url": "https://qregu.com",
+  "offers": {
+    "@type": "Offer",
+    "price": "99",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "QBERX",
+    "url": "https://qregu.com"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -496,29 +542,29 @@ function setLang(l){
 }
 
 var screens={
-  impact_list:{img:function(){return IMG_IMPACT_LIST;},url:'qregu-admin-dev.web.app/impact-reports'},
-  impact_detail:{img:function(){return IMG_IMPACT_DETAIL;},url:'qregu-admin-dev.web.app/impact-reports/detail'},
-  sources:{img:function(){return IMG_ADMIN_SOURCES;},url:'qregu-admin-dev.web.app/sources'},
-  builder:{img:function(){return IMG_WORKFLOW_BUILDER;},url:'qregu-admin-dev.web.app/workflows/builder'}
+  impact_list:{img:'images/impact-list.png',url:'qregu-admin-dev.web.app/impact-reports'},
+  impact_detail:{img:'images/impact-detail.png',url:'qregu-admin-dev.web.app/impact-reports/detail'},
+  sources:{img:'images/admin-sources.png',url:'qregu-admin-dev.web.app/sources'},
+  builder:{img:'images/workflow-builder.png',url:'qregu-admin-dev.web.app/workflows/builder'}
 };
 
 function sw(name,url){
   var keys=Object.keys(screens);
   document.querySelectorAll('.dbt').forEach(function(t,i){t.classList.toggle('on',keys[i]===name);});
-  document.getElementById('dbimg').src=screens[name].img();
+  document.getElementById('dbimg').src=screens[name].img;
   document.getElementById('burl').textContent=screens[name].url;
 }
 
 function init(){
-  document.getElementById('nav-logo').src=IMG_LOGO;
-  document.getElementById('footer-logo').src=IMG_LOGO;
-  document.getElementById('impact-list-img').src=IMG_IMPACT_LIST;
-  document.getElementById('impact-detail-img').src=IMG_IMPACT_DETAIL;
-  document.getElementById('wf-img').src=IMG_WORKFLOW_BUILDER;
+  document.getElementById('nav-logo').src='images/logo.png';
+  document.getElementById('footer-logo').src='images/logo.png';
+  document.getElementById('impact-list-img').src='images/impact-list.png';
+  document.getElementById('impact-detail-img').src='images/impact-detail.png';
+  document.getElementById('wf-img').src='images/workflow-builder.png';
   sw('impact_list');
   // phones
   var ph=document.getElementById('phones');
-  var imgs=[IMG_MOBILE_HOME,IMG_MOBILE_MENU,IMG_MOBILE_TASK];
+  var imgs=['images/mobile-home.png','images/mobile-menu.png','images/mobile-task.png'];
   var ws=['180px','200px','180px'];
   var mt=['0px','0px','-20px'];
   ph.innerHTML=imgs.map(function(s,i){return '<div class="phone" style="width:'+ws[i]+';margin-top:'+mt[i]+'"><img src="'+s+'" alt="QRegu mobile"></div>';}).join('');
