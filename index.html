@@ -31,6 +31,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/common.css">
 <style>
 :root{
   --p:#7C3AED;--pl:#A78BFA;--pd:#5B21B6;--pb:#F5F3FF;--pbd:#DDD6FE;
@@ -169,6 +170,13 @@ h1 em{font-style:normal;color:var(--p)}
 .risk-num span{color:var(--pl)}
 .risk-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6}
 
+/* TRUST BADGES */
+.trust-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px}
+.trust-badges{display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap}
+.trust-badge{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink)}
+.trust-icon{font-size:24px}
+@media(max-width:768px){.trust-badges{gap:24px}.trust-badge{font-size:13px}}
+
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
 .pc{border:1.5px solid var(--border);border-radius:20px;padding:30px 26px;background:white;position:relative;transition:box-shadow .2s}
@@ -185,6 +193,21 @@ h1 em{font-style:normal;color:var(--p)}
 .pbtn{display:block;text-align:center;padding:11px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;font-family:var(--font);border:none;cursor:pointer;width:100%}
 .pbtn.fill{background:var(--p);color:white}.pbtn.fill:hover{background:var(--pd)}
 .pbtn.outline{background:white;color:var(--ink);border:1.5px solid var(--border)}.pbtn.outline:hover{border-color:var(--p);color:var(--p)}
+
+/* FAQ */
+.faq-section{padding:96px 48px;background:var(--surface)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+.faq-col{}
+.faq-category{margin-bottom:24px}
+.faq-cat-title{font-size:13px;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
+.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;background:white}
+.faq-q{padding:14px 18px;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
+.faq-q:hover{background:var(--pb)}
+.faq-q::after{content:"+";font-size:18px;color:var(--muted);font-weight:400;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg);color:var(--p)}
+.faq-a{padding:0 18px;max-height:0;overflow:hidden;transition:all .3s ease;font-size:13px;color:var(--muted);line-height:1.7}
+.faq-item.open .faq-a{padding:0 18px 14px;max-height:300px}
+@media(max-width:768px){.faq-grid{grid-template-columns:1fr}}
 
 /* CTA */
 .cta-wrap{background:linear-gradient(135deg,#4C1D95,#6D28D9,#7C3AED);text-align:center;padding:96px 48px}
@@ -260,6 +283,7 @@ section{padding:96px 48px}
     <a href="#impact" class="nav-link"><span data-l="en" class="on">Impact Analysis</span><span data-l="tr">Etki Analizi</span></a>
     <a href="#discovery" class="nav-link"><span data-l="en" class="on">AI Discovery</span><span data-l="tr">AI Ke&#351;if</span></a>
     <a href="#pricing" class="nav-link"><span data-l="en" class="on">Pricing</span><span data-l="tr">Fiyatlar</span></a>
+    <a href="#faq" class="nav-link"><span data-l="en" class="on">FAQ</span><span data-l="tr">SSS</span></a>
   </div>
   <div class="nav-right">
     <div class="lang-pill">
@@ -481,6 +505,17 @@ section{padding:96px 48px}
 </div>
 </div>
 
+<!-- TRUST BADGES -->
+<div class="trust-section">
+  <div class="trust-badges">
+    <div class="trust-badge"><span class="trust-icon">🔒</span><span><span data-l="en" class="on">GDPR Compliant</span><span data-l="tr">GDPR Uyumlu</span></span></div>
+    <div class="trust-badge"><span class="trust-icon">🛡️</span><span><span data-l="en" class="on">KVKK Compliant</span><span data-l="tr">KVKK Uyumlu</span></span></div>
+    <div class="trust-badge"><span class="trust-icon">🔐</span><span><span data-l="en" class="on">AES-256 Encryption</span><span data-l="tr">AES-256 Şifreleme</span></span></div>
+    <div class="trust-badge"><span class="trust-icon">🌍</span><span><span data-l="en" class="on">EU Data Centers</span><span data-l="tr">AB Veri Merkezleri</span></span></div>
+    <div class="trust-badge"><span class="trust-icon">⏱️</span><span><span data-l="en" class="on">99.9% Uptime</span><span data-l="tr">%99.9 Çalışma Süresi</span></span></div>
+  </div>
+</div>
+
 <!-- PRICING -->
 <section id="pricing">
 <div class="container">
@@ -514,6 +549,81 @@ section{padding:96px 48px}
 </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+<div class="container">
+  <div class="eyebrow"><span data-l="en" class="on">FAQ</span><span data-l="tr">SSS</span></div>
+  <h2 class="s-title"><span data-l="en" class="on">Frequently Asked Questions</span><span data-l="tr">Sık Sorulan Sorular</span></h2>
+  <p class="s-sub"><span data-l="en" class="on">Everything you need to know about QRegu.</span><span data-l="tr">QRegu hakkında bilmeniz gereken her şey.</span></p>
+
+  <div class="faq-grid">
+    <div class="faq-col">
+      <!-- General -->
+      <div class="faq-category">
+        <div class="faq-cat-title"><span data-l="en" class="on">General</span><span data-l="tr">Genel</span></div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">What is QRegu?</span><span data-l="tr">QRegu nedir?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">QRegu is an AI-powered regulatory intelligence platform that automatically monitors regulations, analyzes their impact, and routes tasks to the right teams. It helps financial institutions stay compliant with less manual effort.</span><span data-l="tr">QRegu, mevzuatları otomatik izleyen, etkilerini analiz eden ve görevleri doğru ekiplere yönlendiren AI destekli bir regülatif istihbarat platformudur. Finansal kuruluşların daha az manuel eforla uyumlu kalmasına yardımcı olur.</span></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">Which countries do you support?</span><span data-l="tr">Hangi ülkeleri destekliyorsunuz?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">Currently we support Turkey (BDDK, SPK, TCMB, MASAK, KAP) and UK (FCA). SEC, FINRA, and BaFin are coming soon. With our AI Discovery feature, we can add any regulator in under 2 minutes.</span><span data-l="tr">Şu anda Türkiye (BDDK, SPK, TCMB, MASAK, KAP) ve İngiltere'yi (FCA) destekliyoruz. SEC, FINRA ve BaFin yakında geliyor. AI Discovery özelliğimizle herhangi bir regülatörü 2 dakikadan kısa sürede ekleyebiliyoruz.</span></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">How long does setup take?</span><span data-l="tr">Kurulum ne kadar sürer?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">You can be up and running in days, not months. Basic setup takes less than an hour. Adding new regulators with AI Discovery takes under 2 minutes each.</span><span data-l="tr">Aylar değil, günler içinde çalışmaya başlayabilirsiniz. Temel kurulum bir saatten az sürer. AI Discovery ile yeni regülatör eklemek her biri 2 dakikadan az sürer.</span></div>
+        </div>
+      </div>
+
+      <!-- Pricing -->
+      <div class="faq-category">
+        <div class="faq-cat-title"><span data-l="en" class="on">Pricing</span><span data-l="tr">Fiyatlandırma</span></div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">Is there a free trial?</span><span data-l="tr">Ücretsiz deneme var mı?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">Yes! We offer a 14-day free trial with full access to all features. No credit card required. Book a demo and we'll set you up.</span><span data-l="tr">Evet! Tüm özelliklere tam erişimle 14 günlük ücretsiz deneme sunuyoruz. Kredi kartı gerekmez. Demo rezervasyonu yapın, sizi ayarlayalım.</span></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">Can I cancel anytime?</span><span data-l="tr">İstediğim zaman iptal edebilir miyim?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">Absolutely. There are no long-term contracts. You can cancel your subscription at any time and your access continues until the end of your billing period.</span><span data-l="tr">Kesinlikle. Uzun vadeli sözleşme yok. Aboneliğinizi istediğiniz zaman iptal edebilirsiniz ve erişiminiz fatura döneminin sonuna kadar devam eder.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-col">
+      <!-- Technical -->
+      <div class="faq-category">
+        <div class="faq-cat-title"><span data-l="en" class="on">Technical</span><span data-l="tr">Teknik</span></div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">Is there a mobile app?</span><span data-l="tr">Mobil uygulama var mı?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">Yes! We have native iOS and Android apps. Get push notifications for critical regulations, manage tasks, and track compliance from anywhere.</span><span data-l="tr">Evet! Native iOS ve Android uygulamalarımız var. Kritik mevzuatlar için push bildirimleri alın, görevleri yönetin ve uyumu her yerden takip edin.</span></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">Is my data secure?</span><span data-l="tr">Verilerim güvende mi?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">Security is our top priority. We use AES-256 encryption, TLS 1.3, and store data in EU data centers. We're GDPR and KVKK compliant with 99.9% uptime SLA.</span><span data-l="tr">Güvenlik en önemli önceliğimiz. AES-256 şifreleme, TLS 1.3 kullanıyoruz ve verileri AB veri merkezlerinde saklıyoruz. %99.9 çalışma süresi SLA'sı ile GDPR ve KVKK uyumluyuz.</span></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">Do you offer API integration?</span><span data-l="tr">API entegrasyonu var mı?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">Yes, we provide a RESTful API for enterprise customers. You can integrate QRegu with your existing systems, pull regulation data, and automate workflows programmatically.</span><span data-l="tr">Evet, kurumsal müşteriler için RESTful API sağlıyoruz. QRegu'yu mevcut sistemlerinizle entegre edebilir, mevzuat verilerini çekebilir ve iş akışlarını programatik olarak otomatikleştirebilirsiniz.</span></div>
+        </div>
+      </div>
+
+      <!-- Support -->
+      <div class="faq-category">
+        <div class="faq-cat-title"><span data-l="en" class="on">Support</span><span data-l="tr">Destek</span></div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">How do I get support?</span><span data-l="tr">Nasıl destek alırım?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">Email us at info@qberx.com for any questions. Professional and Enterprise plans include priority support with faster response times.</span><span data-l="tr">Herhangi bir soru için info@qberx.com adresine e-posta gönderin. Professional ve Enterprise planları daha hızlı yanıt süreleri ile öncelikli destek içerir.</span></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">Do you provide training?</span><span data-l="tr">Eğitim sağlıyor musunuz?</span></div>
+          <div class="faq-a"><span data-l="en" class="on">Yes! All plans include onboarding training. Enterprise customers get dedicated training sessions and ongoing support to ensure your team gets the most out of QRegu.</span><span data-l="tr">Evet! Tüm planlar başlangıç eğitimi içerir. Kurumsal müşteriler, ekibinizin QRegu'dan en iyi şekilde yararlanmasını sağlamak için özel eğitim oturumları ve sürekli destek alır.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- CTA -->
 <div class="cta-wrap">
   <div class="container">
@@ -530,17 +640,13 @@ section{padding:96px 48px}
   <div class="fi">
     <div class="flogo"><img id="footer-logo" src="" alt="QRegu">QRegu</div>
     <span class="fcopy">&copy; 2026 QRegu by Qberx Technology</span>
-    <div class="flinks"><a href="mailto:info@qberx.com">Contact</a><a href="https://qregu-admin-dev.web.app" target="_blank">Admin Panel</a><a href="https://qberx.com" target="_blank">Qberx.com</a></div>
+    <div class="flinks"><a href="mailto:info@qberx.com">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms-of-service.html">Terms</a><a href="https://qregu-admin-dev.web.app" target="_blank">Admin Panel</a></div>
   </div>
 </footer>
 
+<script src="shared/common.js"></script>
 <script>
-function setLang(l){
-  document.querySelectorAll('[data-l]').forEach(function(e){e.classList.toggle('on',e.getAttribute('data-l')===l);});
-  document.getElementById('ben').classList.toggle('on',l==='en');
-  document.getElementById('btr').classList.toggle('on',l==='tr');
-}
-
+// Page-specific: Dashboard tabs
 var screens={
   impact_list:{img:'images/impact-list.png',url:'qregu-admin-dev.web.app/impact-reports'},
   impact_detail:{img:'images/impact-detail.png',url:'qregu-admin-dev.web.app/impact-reports/detail'},
@@ -555,7 +661,7 @@ function sw(name,url){
   document.getElementById('burl').textContent=screens[name].url;
 }
 
-function init(){
+function initPage(){
   document.getElementById('nav-logo').src='images/logo.png';
   document.getElementById('footer-logo').src='images/logo.png';
   document.getElementById('impact-list-img').src='images/impact-list.png';
@@ -568,9 +674,8 @@ function init(){
   var ws=['180px','200px','180px'];
   var mt=['0px','0px','-20px'];
   ph.innerHTML=imgs.map(function(s,i){return '<div class="phone" style="width:'+ws[i]+';margin-top:'+mt[i]+'"><img src="'+s+'" alt="QRegu mobile"></div>';}).join('');
-  setLang('en');
 }
-init();
+initPage();
 </script>
 </body>
 </html>
