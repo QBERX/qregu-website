@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — QRegu</title>
+<meta name="description" content="Contact QRegu - Get in touch for demos, pricing, partnerships, or support.">
+<link rel="canonical" href="https://qregu.com/contact.html">
+<link rel="alternate" hreflang="en" href="https://qregu.com/contact.html">
+<link rel="alternate" hreflang="tr" href="https://qregu.com/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://qregu.com/contact.html">
+<link rel="icon" type="image/png" href="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="shared/common.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><img src="images/logo.png" alt="QRegu">QRegu</a>
+  <div class="lang-pill">
+    <button class="lbtn on" id="ben" onclick="setLang('en')">EN</button>
+    <button class="lbtn" id="btr" onclick="setLang('tr')">TR</button>
+  </div>
+</nav>
+
+<div class="page-container">
+  <a href="/" class="back-link"><span data-l="en" class="on">&larr; Back to Home</span><span data-l="tr">&larr; Ana Sayfaya D&ouml;n</span></a>
+
+  <h1 class="page-title"><span data-l="en" class="on">Contact Us</span><span data-l="tr">Bize Ula&#351;&#305;n</span></h1>
+  <p class="page-subtitle"><span data-l="en" class="on">Have a question? We'd love to hear from you.</span><span data-l="tr">Bir sorunuz mu var? Sizden haber almak isteriz.</span></p>
+
+  <!-- Success Message -->
+  <div class="success-msg" id="success-msg">
+    <div class="success-icon">&#x2705;</div>
+    <div class="success-title"><span data-l="en" class="on">Message Sent!</span><span data-l="tr">Mesaj G&ouml;nderildi!</span></div>
+    <p class="success-text"><span data-l="en" class="on">Thank you for reaching out. We'll get back to you within 24 hours.</span><span data-l="tr">Bize ula&#351;t&#305;&#287;&#305;n&#305;z i&ccedil;in te&#351;ekk&uuml;rler. 24 saat i&ccedil;inde size d&ouml;n&uuml;&#351; yapaca&#287;&#305;z.</span></p>
+  </div>
+
+  <!-- Contact Form - FormSubmit.co -->
+  <form class="contact-form" id="contact-form" action="https://formsubmit.co/info@qberx.com" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label"><span data-l="en" class="on">Name</span><span data-l="tr">&#304;sim</span> <span class="req">*</span></label>
+        <input type="text" name="name" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email <span class="req">*</span></label>
+        <input type="email" name="email" class="form-input" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label"><span data-l="en" class="on">Company</span><span data-l="tr">&#350;irket</span></label>
+        <input type="text" name="company" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label"><span data-l="en" class="on">Inquiry Type</span><span data-l="tr">Konu</span> <span class="req">*</span></label>
+        <select name="inquiry_type" class="form-select" required>
+          <option value="" disabled selected>Select...</option>
+          <option value="demo">Demo</option>
+          <option value="pricing">Pricing</option>
+          <option value="partnership">Partnership</option>
+          <option value="support">Support</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label"><span data-l="en" class="on">Message</span><span data-l="tr">Mesaj</span> <span class="req">*</span></label>
+      <textarea name="message" class="form-textarea" required></textarea>
+    </div>
+
+    <!-- FormSubmit settings -->
+    <input type="hidden" name="_subject" value="New contact from QRegu website">
+    <input type="hidden" name="_next" value="https://qregu.com/contact.html?success=1">
+    <input type="hidden" name="_captcha" value="true">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="_honey" style="display:none">
+
+    <button type="submit" class="form-submit"><span data-l="en" class="on">Send Message</span><span data-l="tr">Mesaj G&ouml;nder</span></button>
+  </form>
+
+  <!-- Alt Contact Methods -->
+  <div class="alt-contact">
+    <div class="alt-contact-title"><span data-l="en" class="on">Or reach us directly</span><span data-l="tr">Veya do&#287;rudan ula&#351;&#305;n</span></div>
+    <div class="alt-methods">
+      <a href="mailto:info@qberx.com" class="alt-method">
+        <span class="alt-icon">&#x2709;</span>
+        info@qberx.com
+      </a>
+      <a href="https://calendly.com/berker-yenal-qberx/30min" target="_blank" class="alt-method">
+        <span class="alt-icon">&#x1F4C5;</span>
+        <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="page-footer">
+  <p>&copy; 2026 QBERX. <span data-l="en" class="on">All rights reserved.</span><span data-l="tr">T&uuml;m haklar&#305; sakl&#305;d&#305;r.</span> | <a href="/privacy-policy.html"><span data-l="en" class="on">Privacy Policy</span><span data-l="tr">Gizlilik</span></a> | <a href="/terms-of-service.html"><span data-l="en" class="on">Terms of Service</span><span data-l="tr">Kullan&#305;m Ko&#351;ullar&#305;</span></a></p>
+</footer>
+
+<script src="shared/common.js"></script>
+</body>
+</html>

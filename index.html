@@ -10,6 +10,11 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://qregu.com/">
 
+<!-- hreflang for multilingual SEO -->
+<link rel="alternate" hreflang="en" href="https://qregu.com/">
+<link rel="alternate" hreflang="tr" href="https://qregu.com/">
+<link rel="alternate" hreflang="x-default" href="https://qregu.com/">
+
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://qregu.com/">
@@ -31,225 +36,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="shared/common.css">
-<style>
-:root{
-  --p:#7C3AED;--pl:#A78BFA;--pd:#5B21B6;--pb:#F5F3FF;--pbd:#DDD6FE;
-  --ink:#0A0A0F;--ink2:#18181B;--muted:#6B7280;--muted2:#9CA3AF;
-  --border:#E5E7EB;--surface:#F9FAFB;--white:#FFF;
-  --green:#059669;--gbg:#D1FAE5;--amber:#D97706;--abg:#FEF3C7;--red:#DC2626;--rbg:#FEE2E2;
-  --font:"Plus Jakarta Sans",sans-serif;
-  --r:14px;--shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);--shadowl:0 8px 32px rgba(0,0,0,.10),0 2px 8px rgba(0,0,0,.06);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--white);color:var(--ink);line-height:1.6;overflow-x:hidden}
-
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;background:rgba(255,255,255,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 48px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:20px;color:var(--ink);letter-spacing:-.3px}
-.nav-logo img{width:32px;height:32px;border-radius:8px}
-.nav-links{display:flex;gap:28px}
-.nav-link{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;transition:color .2s}
-.nav-link:hover{color:var(--ink)}
-.nav-right{display:flex;align-items:center;gap:12px}
-.lang-pill{display:flex;background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden}
-.lbtn{border:none;background:transparent;padding:5px 14px;font-family:var(--font);font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .15s}
-.lbtn.on{background:var(--p);color:white;border-radius:20px}
-.btn-cta{background:var(--p);color:white;border:none;padding:9px 20px;border-radius:10px;font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
-.btn-cta:hover{background:var(--pd);transform:translateY(-1px)}
-
-/* HERO */
-.hero{padding:116px 48px 72px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--pb);border:1px solid var(--pbd);color:var(--pd);font-size:12px;font-weight:600;padding:5px 14px;border-radius:20px;margin-bottom:22px}
-.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
-h1{font-size:clamp(34px,3.5vw,52px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:var(--ink);margin-bottom:18px}
-h1 em{font-style:normal;color:var(--p)}
-.hero-sub{font-size:17px;color:var(--muted);line-height:1.75;margin-bottom:32px;max-width:480px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--p);color:white;padding:13px 24px;border-radius:12px;font-family:var(--font);font-size:15px;font-weight:600;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
-.btn-primary:hover{background:var(--pd);transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,58,237,.3)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--ink);padding:13px 20px;border-radius:12px;font-family:var(--font);font-size:15px;font-weight:600;text-decoration:none;transition:all .2s;border:1.5px solid var(--border)}
-.btn-ghost:hover{border-color:var(--p);color:var(--p)}
-.hero-stats{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--border)}
-.sn{font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.5px;display:block}
-.sl{font-size:12px;color:var(--muted);font-weight:500;margin-top:1px;display:block}
-
-/* DASHBOARD TABS */
-.db-tabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
-.dbt{font-size:12px;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;border:none;background:transparent;color:var(--muted);font-family:var(--font);transition:all .15s}
-.dbt.on{background:var(--pb);color:var(--p)}
-.browser{background:white;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadowl);overflow:hidden}
-.bbar{background:#F3F4F6;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:10px}
-.bdots{display:flex;gap:6px}
-.bdot{width:10px;height:10px;border-radius:50%}
-.burl{flex:1;background:white;border:1px solid var(--border);border-radius:6px;padding:4px 12px;font-size:12px;color:var(--muted)}
-.bimg{width:100%;display:block}
-
-/* SECTORS */
-.sectors-section{background:var(--ink2);padding:80px 48px}
-.sectors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#2D2D35;border-radius:16px;overflow:hidden;margin-top:48px}
-.sector-card{background:#1C1C24;padding:32px 28px;transition:background .2s}
-.sector-card:hover{background:#242430}
-.sector-icon{font-size:28px;margin-bottom:16px}
-.sector-title{font-size:16px;font-weight:700;color:white;margin-bottom:8px}
-.sector-desc{font-size:13px;color:#6B7280;line-height:1.6}
-.sector-regs{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px}
-.reg-chip{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;background:rgba(124,58,237,.15);color:var(--pl)}
-
-/* IMPACT SECTION */
-.impact-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:56px}
-.impact-screens{display:flex;flex-direction:column;gap:12px}
-.impact-img{border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadowl)}
-.impact-img img{width:100%;display:block}
-.impact-points{display:flex;flex-direction:column;gap:20px}
-.ip{display:flex;gap:14px;align-items:flex-start}
-.ip-icon{width:40px;height:40px;border-radius:10px;background:var(--pb);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.ip-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
-.ip-desc{font-size:14px;color:var(--muted);line-height:1.65}
-.ip-badge{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
-.badge-crit{background:var(--rbg);color:var(--red)}
-.badge-high{background:var(--abg);color:var(--amber)}
-.badge-med{background:#FEF9C3;color:#854D0E}
-
-/* DISCOVERY SECTION */
-.discovery-section{background:var(--surface);padding:96px 48px}
-.discovery-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:56px}
-.discovery-steps{display:flex;flex-direction:column;gap:4px}
-.ds{display:flex;gap:0;align-items:stretch}
-.ds-left{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0}
-.ds-num{width:32px;height:32px;border-radius:50%;background:var(--p);color:white;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ds-line{width:2px;background:var(--pbd);flex:1;margin:4px 0}
-.ds:last-child .ds-line{display:none}
-.ds-body{padding:0 0 24px 16px}
-.ds-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
-.ds-desc{font-size:13px;color:var(--muted);line-height:1.6}
-.ds-time{display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--green);background:var(--gbg);padding:2px 10px;border-radius:20px}
-.discovery-visual{position:relative}
-.discovery-card{background:white;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
-.dc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
-.dc-title{font-size:14px;font-weight:700;color:var(--ink)}
-.dc-badge{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;background:var(--gbg);color:var(--green)}
-.dc-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
-.dc-row:last-child{border:none}
-.dc-label{font-size:13px;color:var(--muted)}
-.dc-value{font-size:13px;font-weight:600;color:var(--ink)}
-.dc-progress{height:6px;background:var(--surface);border-radius:3px;margin-top:16px;overflow:hidden}
-.dc-bar{height:100%;background:linear-gradient(90deg,var(--p),var(--pl));border-radius:3px;width:100%;animation:bar 2s ease infinite alternate}
-@keyframes bar{0%{width:40%}100%{width:100%}}
-
-/* WORKFLOW */
-.workflow-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;margin-top:56px}
-.wf-img{border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadowl)}
-.wf-img img{width:100%;display:block}
-.wf-steps{display:flex;flex-direction:column;gap:16px}
-.wfs{display:flex;gap:14px;align-items:flex-start;padding:18px;background:white;border:1px solid var(--border);border-radius:12px;transition:border-color .2s}
-.wfs:hover{border-color:var(--pbd)}
-.wfn{width:30px;height:30px;border-radius:8px;background:var(--p);color:white;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.wft{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
-.wfd{font-size:13px;color:var(--muted);line-height:1.55}
-
-/* MOBILE */
-.mobile-section{background:var(--surface)}
-.mobile-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:56px}
-.phones{display:flex;gap:12px;justify-content:center;align-items:flex-end}
-.phone{border-radius:32px;overflow:hidden;border:6px solid var(--ink2);box-shadow:0 20px 48px rgba(0,0,0,.18);flex-shrink:0}
-.phone img{width:100%;display:block}
-.mobile-points{display:flex;flex-direction:column;gap:16px}
-.mp{display:flex;gap:12px;align-items:flex-start;padding:16px;background:white;border:1px solid var(--border);border-radius:12px}
-.mpi{font-size:18px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--pb);border-radius:8px;flex-shrink:0}
-.mpt{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
-.mpd{font-size:13px;color:var(--muted);line-height:1.55}
-
-/* RISK SECTION */
-.risk-section{background:linear-gradient(135deg,#1A0533 0%,#2D1060 50%,#3B1585 100%);padding:80px 48px}
-.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.risk-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:28px 24px;text-align:center}
-.risk-num{font-size:40px;font-weight:800;color:white;letter-spacing:-1px;display:block;margin-bottom:8px}
-.risk-num span{color:var(--pl)}
-.risk-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6}
-
-/* TRUST BADGES */
-.trust-section{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:48px}
-.trust-badges{display:flex;justify-content:center;align-items:center;gap:48px;flex-wrap:wrap}
-.trust-badge{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink)}
-.trust-icon{font-size:24px}
-@media(max-width:768px){.trust-badges{gap:24px}.trust-badge{font-size:13px}}
-
-/* PRICING */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
-.pc{border:1.5px solid var(--border);border-radius:20px;padding:30px 26px;background:white;position:relative;transition:box-shadow .2s}
-.pc:hover{box-shadow:var(--shadow)}
-.pc.feat{border-color:var(--p);background:var(--pb)}
-.flabel{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--p);color:white;font-size:11px;font-weight:700;padding:4px 16px;border-radius:20px;white-space:nowrap}
-.ptier{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
-.pamount{font-size:38px;font-weight:800;color:var(--ink);letter-spacing:-1px;line-height:1}
-.pamount sup{font-size:18px;vertical-align:top;margin-top:8px;display:inline-block}
-.pperiod{font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:22px}
-.plist{list-style:none;margin-bottom:24px}
-.plist li{font-size:14px;color:var(--ink);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
-.plist li::before{content:"\2713";color:var(--p);font-weight:700;flex-shrink:0}
-.pbtn{display:block;text-align:center;padding:11px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;font-family:var(--font);border:none;cursor:pointer;width:100%}
-.pbtn.fill{background:var(--p);color:white}.pbtn.fill:hover{background:var(--pd)}
-.pbtn.outline{background:white;color:var(--ink);border:1.5px solid var(--border)}.pbtn.outline:hover{border-color:var(--p);color:var(--p)}
-
-/* FAQ */
-.faq-section{padding:96px 48px;background:var(--surface)}
-.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
-.faq-col{}
-.faq-category{margin-bottom:24px}
-.faq-cat-title{font-size:13px;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
-.faq-item{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;background:white}
-.faq-q{padding:14px 18px;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .2s}
-.faq-q:hover{background:var(--pb)}
-.faq-q::after{content:"+";font-size:18px;color:var(--muted);font-weight:400;transition:transform .2s}
-.faq-item.open .faq-q::after{transform:rotate(45deg);color:var(--p)}
-.faq-a{padding:0 18px;max-height:0;overflow:hidden;transition:all .3s ease;font-size:13px;color:var(--muted);line-height:1.7}
-.faq-item.open .faq-a{padding:0 18px 14px;max-height:300px}
-@media(max-width:768px){.faq-grid{grid-template-columns:1fr}}
-
-/* CTA */
-.cta-wrap{background:linear-gradient(135deg,#4C1D95,#6D28D9,#7C3AED);text-align:center;padding:96px 48px}
-.cta-wrap h2{color:white;font-size:clamp(28px,3vw,42px);font-weight:800;letter-spacing:-1px;margin-bottom:14px}
-.cta-sub{font-size:17px;color:rgba(255,255,255,.7);margin:0 auto 36px;max-width:480px}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-
-/* FOOTER */
-footer{background:var(--ink2);padding:40px 48px}
-.fi{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-.flogo{font-size:16px;font-weight:800;color:white;display:flex;align-items:center;gap:8px}
-.flogo img{width:26px;height:26px;border-radius:6px}
-.fcopy{font-size:13px;color:#4B5563}
-.flinks{display:flex;gap:20px}
-.flinks a{font-size:13px;color:#4B5563;text-decoration:none;transition:color .2s}
-.flinks a:hover{color:white}
-
-/* UTILS */
-section{padding:96px 48px}
-.container{max-width:1280px;margin:0 auto}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--p);margin-bottom:12px}
-.s-title{font-size:clamp(26px,2.5vw,38px);font-weight:800;letter-spacing:-1px;color:var(--ink);line-height:1.2;margin-bottom:12px}
-.s-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.75}
-.s-title-w{color:white}
-.eyebrow-w{color:var(--pl)}
-
-/* LANG */
-[data-l]{display:none}[data-l].on{display:block !important}
-.hero-stats [data-l].on{display:block !important;font-size:12px;color:var(--muted);font-weight:500;margin-top:1px}
-
-@media(max-width:1024px){
-  .hero,.impact-layout,.discovery-layout,.workflow-layout,.mobile-layout{grid-template-columns:1fr;gap:40px}
-  .hero{padding:100px 24px 64px}.hero-visual{order:-1}
-  .sectors-grid{grid-template-columns:1fr 1fr}
-  .risk-grid,.pricing-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto}
-  section{padding:64px 24px}
-  .nav{padding:0 20px}.nav-links{display:none}
-  .phones .phone{width:150px}
-  .sectors-section,.risk-section,.cta-wrap,.discovery-section{padding:64px 24px}
-  footer{padding:32px 24px}
-}
-</style>
 
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -263,7 +51,7 @@ section{padding:96px 48px}
   "url": "https://qregu.com",
   "offers": {
     "@type": "Offer",
-    "price": "99",
+    "price": "19",
     "priceCurrency": "USD"
   },
   "provider": {
@@ -273,28 +61,60 @@ section{padding:96px 48px}
   }
 }
 </script>
+
+<!-- FAQ Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is QRegu?", "acceptedAnswer": {"@type": "Answer", "text": "QRegu is an AI-powered regulatory intelligence platform that automatically monitors regulations, analyzes their impact, and routes tasks to the right teams."}},
+    {"@type": "Question", "name": "Which countries do you support?", "acceptedAnswer": {"@type": "Answer", "text": "Currently we support Turkey (BDDK, SPK, TCMB, MASAK, KAP) and UK (FCA). SEC, FINRA, and BaFin are coming soon."}},
+    {"@type": "Question", "name": "How long does setup take?", "acceptedAnswer": {"@type": "Answer", "text": "You can be up and running in days, not months. Basic setup takes less than an hour."}},
+    {"@type": "Question", "name": "Is there a free trial?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! We offer a 14-day free trial with full access to all features. No credit card required."}},
+    {"@type": "Question", "name": "Can I cancel anytime?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. There are no long-term contracts. You can cancel your subscription at any time."}},
+    {"@type": "Question", "name": "Is there a mobile app?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! We have native iOS and Android apps with push notifications for critical regulations."}},
+    {"@type": "Question", "name": "Is my data secure?", "acceptedAnswer": {"@type": "Answer", "text": "We use AES-256 encryption, TLS 1.3, and store data in EU data centers. GDPR and KVKK compliant."}},
+    {"@type": "Question", "name": "Do you offer API integration?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, we provide a RESTful API for enterprise customers to integrate with existing systems."}},
+    {"@type": "Question", "name": "How do I get support?", "acceptedAnswer": {"@type": "Answer", "text": "Email us at info@qberx.com. Professional and Enterprise plans include priority support."}},
+    {"@type": "Question", "name": "Do you provide training?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! All plans include onboarding training. Enterprise customers get dedicated training sessions."}}
+  ]
+}
+</script>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="/" class="nav-logo"><img id="nav-logo" src="" alt="QRegu">QRegu</a>
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <a href="/" class="nav-logo"><img id="nav-logo" src="" alt="QRegu logo">QRegu</a>
   <div class="nav-links">
     <a href="#sectors" class="nav-link"><span data-l="en" class="on">Sectors</span><span data-l="tr">Sekt&ouml;rler</span></a>
     <a href="#impact" class="nav-link"><span data-l="en" class="on">Impact Analysis</span><span data-l="tr">Etki Analizi</span></a>
     <a href="#discovery" class="nav-link"><span data-l="en" class="on">AI Discovery</span><span data-l="tr">AI Ke&#351;if</span></a>
+    <a href="#roi" class="nav-link">ROI</a>
     <a href="#pricing" class="nav-link"><span data-l="en" class="on">Pricing</span><span data-l="tr">Fiyatlar</span></a>
     <a href="#faq" class="nav-link"><span data-l="en" class="on">FAQ</span><span data-l="tr">SSS</span></a>
   </div>
   <div class="nav-right">
     <div class="lang-pill">
-      <button class="lbtn on" id="ben" onclick="setLang('en')">EN</button>
-      <button class="lbtn" id="btr" onclick="setLang('tr')">TR</button>
+      <button class="lbtn on" id="ben" onclick="setLang('en')" aria-label="Switch to English">EN</button>
+      <button class="lbtn" id="btr" onclick="setLang('tr')" aria-label="Türkçe'ye geç">TR</button>
     </div>
     <a href="https://calendly.com/berker-yenal-qberx/30min" target="_blank" class="btn-cta">
       &#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span>
     </a>
+    <button class="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div id="mobile-menu" class="mobile-menu" role="menu" aria-label="Mobile navigation">
+  <a href="#sectors" onclick="document.getElementById('mobile-menu').classList.remove('open')"><span data-l="en" class="on">Sectors</span><span data-l="tr">Sektörler</span></a>
+  <a href="#impact" onclick="document.getElementById('mobile-menu').classList.remove('open')"><span data-l="en" class="on">Impact Analysis</span><span data-l="tr">Etki Analizi</span></a>
+  <a href="#discovery" onclick="document.getElementById('mobile-menu').classList.remove('open')"><span data-l="en" class="on">AI Discovery</span><span data-l="tr">AI Keşif</span></a>
+  <a href="#roi" onclick="document.getElementById('mobile-menu').classList.remove('open')">ROI</a>
+  <a href="#pricing" onclick="document.getElementById('mobile-menu').classList.remove('open')"><span data-l="en" class="on">Pricing</span><span data-l="tr">Fiyatlar</span></a>
+  <a href="#faq" onclick="document.getElementById('mobile-menu').classList.remove('open')"><span data-l="en" class="on">FAQ</span><span data-l="tr">SSS</span></a>
+</div>
 
 <!-- HERO -->
 <div style="max-width:1280px;margin:0 auto;padding:116px 48px 72px;display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center" class="hero-wrap">
@@ -310,7 +130,7 @@ section{padding:96px 48px}
       <div><span class="sn">2 min</span><span id="s1en" data-l="en">New regulator setup</span><span id="s1tr" data-l="tr">Yeni regulat&ouml;r kurulumu</span></div>
       <div><span class="sn">87%</span><span id="s2en" data-l="en">Compliance time saved</span><span id="s2tr" data-l="tr">Uyum s&uuml;resi tasarrufu</span></div>
       <div><span class="sn">10+</span><span id="s3en" data-l="en">Live regulators</span><span id="s3tr" data-l="tr">Canl&#305; regulat&ouml;r</span></div>
-      <div><span class="sn">$99</span><span id="s4en" data-l="en">Starting / month</span><span id="s4tr" data-l="tr">Ba&#351;lang&#305;&ccedil; / ay</span></div>
+      <div><span class="sn">$19</span><span id="s4en" data-l="en">per user / month</span><span id="s4tr" data-l="tr">kullan&#305;c&#305; / ay</span></div>
     </div>
   </div>
   <div>
@@ -325,7 +145,7 @@ section{padding:96px 48px}
         <div class="bdots"><div class="bdot" style="background:#FF5F56"></div><div class="bdot" style="background:#FFBD2E"></div><div class="bdot" style="background:#27C93F"></div></div>
         <div class="burl" id="burl">qregu-admin-dev.web.app/impact-reports</div>
       </div>
-      <img id="dbimg" class="bimg" src="" alt="QRegu Dashboard">
+      <img id="dbimg" class="bimg" src="" alt="QRegu admin dashboard showing impact reports and regulation monitoring" loading="lazy">
     </div>
   </div>
 </div>
@@ -336,12 +156,12 @@ section{padding:96px 48px}
     <span data-l="en" class="on">Live regulatory monitoring</span><span data-l="tr">Canl&#305; mevzuat izleme</span>
   </div>
   <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap">
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>BDDK</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>SPK</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>TCMB</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>MASAK</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>KAP</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#9CA3AF"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>FCA</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>BDDK</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>SPK</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>TCMB</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>MASAK</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>KAP</span>
+    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>FCA</span>
     <span style="font-size:13px;font-weight:700;color:#C4C9D4">SEC &rarr;</span>
     <span style="font-size:13px;font-weight:700;color:#C4C9D4">FINRA &rarr;</span>
     <span style="font-size:13px;font-weight:700;color:#C4C9D4">BaFin &rarr;</span>
@@ -353,32 +173,32 @@ section{padding:96px 48px}
   <div class="container">
     <div class="eyebrow eyebrow-w"><span data-l="en" class="on">Sectors</span><span data-l="tr">Sekt&ouml;rler</span></div>
     <h2 class="s-title s-title-w"><span data-l="en" class="on">Built for every regulated financial sector</span><span data-l="tr">Her d&uuml;zenlenmi&#351; finans sekt&ouml;r&uuml; i&ccedil;in</span></h2>
-    <p class="s-sub" style="color:#6B7280"><span data-l="en" class="on">QRegu covers the full spectrum of financial regulation. One platform, all sectors.</span><span data-l="tr">QRegu finansal mevzuatın tüm yelpazesini kapsıyor. Tek platform, tüm sektörler.</span></p>
+    <p class="s-sub" style="color:var(--muted)"><span data-l="en" class="on">QRegu covers the full spectrum of financial regulation. One platform, all sectors.</span><span data-l="tr">QRegu finansal mevzuatın tüm yelpazesini kapsıyor. Tek platform, tüm sektörler.</span></p>
     <div class="sectors-grid">
-      <div class="sector-card">
+      <a href="/use-cases/banking.html" class="sector-card">
         <div class="sector-icon">&#x1F3E6;</div>
         <div class="sector-title"><span data-l="en" class="on">Banking</span><span data-l="tr">Bankac&#305;l&#305;k</span></div>
         <p class="sector-desc"><span data-l="en" class="on">Capital adequacy, AML/KYC, consumer credit, payment systems, fee &amp; tariff regulations.</span><span data-l="tr">Sermaye yeterliliği, AML/KYC, tüketici kredisi, ödeme sistemleri, ücret ve tarife düzenlemeleri.</span></p>
         <div class="sector-regs"><span class="reg-chip">BDDK</span><span class="reg-chip">TCMB</span><span class="reg-chip">MASAK</span><span class="reg-chip">SEC</span></div>
-      </div>
-      <div class="sector-card">
+      </a>
+      <a href="/use-cases/capital-markets.html" class="sector-card">
         <div class="sector-icon">&#x1F4C8;</div>
         <div class="sector-title"><span data-l="en" class="on">Capital Markets</span><span data-l="tr">Sermaye Piyasalar&#305;</span></div>
         <p class="sector-desc"><span data-l="en" class="on">Securities disclosure, investment fund rules, public offering regulations, KAP filings.</span><span data-l="tr">Menkul kıymet kamuoyunu aydınlatma, yatırım fonu kuralları, halka arz düzenlemeleri, KAP bildirimleri.</span></p>
         <div class="sector-regs"><span class="reg-chip">SPK</span><span class="reg-chip">KAP</span><span class="reg-chip">FINRA</span><span class="reg-chip">FCA</span></div>
-      </div>
-      <div class="sector-card">
+      </a>
+      <a href="/use-cases/fintech.html" class="sector-card">
         <div class="sector-icon">&#x1F4B3;</div>
         <div class="sector-title"><span data-l="en" class="on">Fintech &amp; Payments</span><span data-l="tr">Fintech &amp; &Ouml;demeler</span></div>
         <p class="sector-desc"><span data-l="en" class="on">E-money licenses, payment institution rules, contactless limits, open banking compliance.</span><span data-l="tr">E-para lisansları, ödeme kuruluşu kuralları, temassız limitler, açık bankacılık uyumu.</span></p>
         <div class="sector-regs"><span class="reg-chip">TCMB</span><span class="reg-chip">BDDK</span><span class="reg-chip">FCA</span><span class="reg-chip">MAS</span></div>
-      </div>
-      <div class="sector-card">
+      </a>
+      <a href="/use-cases/insurance.html" class="sector-card">
         <div class="sector-icon">&#x1F6E1;&#xFE0F;</div>
         <div class="sector-title"><span data-l="en" class="on">Insurance</span><span data-l="tr">Sigorta</span></div>
         <p class="sector-desc"><span data-l="en" class="on">Solvency requirements, product approval, claim handling rules, consumer protection.</span><span data-l="tr">Ödeme gücü gereksinimleri, ürün onayı, hasar işleme kuralları, tüketici koruması.</span></p>
         <div class="sector-regs"><span class="reg-chip">BDDK</span><span class="reg-chip">TSB</span><span class="reg-chip">EIOPA</span><span class="reg-chip">FCA</span></div>
-      </div>
+      </a>
     </div>
   </div>
 </div>
@@ -391,8 +211,8 @@ section{padding:96px 48px}
   <p class="s-sub"><span data-l="en" class="on">AI reads every regulation and produces a full impact report: severity score, affected departments, required actions, estimated effort, and deadlines.</span><span data-l="tr">AI her mevzuatı okuyarak tam etki raporu üretir: önem skoru, etkilenen departmanlar, gerekli aksiyonlar, tahmini efor ve son tarihler.</span></p>
   <div class="impact-layout">
     <div class="impact-screens">
-      <div class="impact-img"><img id="impact-list-img" src="" alt="Impact Reports List"></div>
-      <div class="impact-img" style="margin-top:0"><img id="impact-detail-img" src="" alt="Impact Report Detail"></div>
+      <div class="impact-img"><img id="impact-list-img" src="" alt="QRegu impact reports list showing severity scores and affected departments" loading="lazy"></div>
+      <div class="impact-img" style="margin-top:0"><img id="impact-detail-img" src="" alt="Detailed impact report with AI-generated actions and timeline" loading="lazy"></div>
     </div>
     <div class="impact-points">
       <div class="ip">
@@ -400,7 +220,7 @@ section{padding:96px 48px}
         <div>
           <div class="ip-title"><span data-l="en" class="on">Automatic severity scoring</span><span data-l="tr">Otomatik &ouml;nem skorlamas&#305;</span></div>
           <div class="ip-desc"><span data-l="en" class="on">Every regulation gets scored: Critical, High, Medium, or Low. No more manual triage. Your team focuses on what matters.</span><span data-l="tr">Her mevzuat skorlanır: Kritik, Yüksek, Orta veya Düşük. Manuel değerlendirme yok. Ekibiniz önemli olana odaklanır.</span></div>
-          <div style="display:flex;gap:6px;margin-top:10px"><span class="ip-badge badge-crit">Kritik</span><span class="ip-badge badge-high" style="background:var(--abg);color:var(--amber)">Y&uuml;ksek</span><span class="ip-badge" style="background:#FEF9C3;color:#854D0E">Orta</span></div>
+          <div style="display:flex;gap:6px;margin-top:10px"><span class="ip-badge badge-crit"><span data-l="en" class="on">Critical</span><span data-l="tr">Kritik</span></span><span class="ip-badge badge-high" style="background:var(--abg);color:var(--amber)"><span data-l="en" class="on">High</span><span data-l="tr">Y&uuml;ksek</span></span><span class="ip-badge" style="background:#FEF9C3;color:#854D0E"><span data-l="en" class="on">Medium</span><span data-l="tr">Orta</span></span></div>
         </div>
       </div>
       <div class="ip">
@@ -462,7 +282,7 @@ section{padding:96px 48px}
   <div class="eyebrow"><span data-l="en" class="on">Workflow Automation</span><span data-l="tr">&#304;&#351; Ak&#305;&#351;&#305; Otomasyonu</span></div>
   <h2 class="s-title"><span data-l="en" class="on">From detection to closed task,<br>zero manual steps</span><span data-l="tr">Tesptten kapal&#305; goreve,<br>s&#305;f&#305;r manuel ad&#305;m</span></h2>
   <div class="workflow-layout">
-    <div class="wf-img"><img id="wf-img" src="" alt="Workflow Builder"></div>
+    <div class="wf-img"><img id="wf-img" src="" alt="QRegu visual workflow builder for compliance automation" loading="lazy"></div>
     <div class="wf-steps">
       <div class="wfs"><div class="wfn">1</div><div><div class="wft"><span data-l="en" class="on">New regulation triggers workflow</span><span data-l="tr">Yeni mevzuat i&#351; ak&#305;&#351;&#305;n&#305; tetikler</span></div><div class="wfd"><span data-l="en" class="on">The moment a regulation is published, your custom workflow activates automatically.</span><span data-l="tr">Mevzuat yayınlandığı anda özel iş akışınız otomatik devreye girer.</span></div></div></div>
       <div class="wfs"><div class="wfn">2</div><div><div class="wft"><span data-l="en" class="on">AI runs impact analysis</span><span data-l="tr">AI etki analizi yap&#305;yor</span></div><div class="wfd"><span data-l="en" class="on">Severity scored, departments identified, actions listed &mdash; in seconds.</span><span data-l="tr">Önem skorlandı, departmanlar belirlendi, aksiyonlar listelendi &mdash; saniyeler içinde.</span></div></div></div>
@@ -516,35 +336,186 @@ section{padding:96px 48px}
   </div>
 </div>
 
+<!-- INTEGRATIONS -->
+<div class="integrations-section">
+  <div class="integrations-title"><span data-l="en" class="on">Integrations</span><span data-l="tr">Entegrasyonlar</span></div>
+  <div class="integrations-grid">
+    <div class="integration-item"><span class="integration-icon">💬</span>Slack</div>
+    <div class="integration-item"><span class="integration-icon">👥</span>Microsoft Teams</div>
+    <div class="integration-item"><span class="integration-icon">📋</span>Jira</div>
+    <div class="integration-item"><span class="integration-icon">⚙️</span>ServiceNow</div>
+    <div class="integration-item"><span class="integration-icon">☁️</span>Salesforce</div>
+    <div class="integration-item"><span class="integration-icon">🔗</span>REST API</div>
+  </div>
+</div>
+
+<!-- ROI CALCULATOR -->
+<section id="roi" class="roi-section">
+<div class="container">
+  <div class="eyebrow"><span data-l="en" class="on">ROI Calculator</span><span data-l="tr">ROI Hesaplay&#305;c&#305;</span></div>
+  <h2 class="s-title"><span data-l="en" class="on">Calculate your compliance savings</span><span data-l="tr">Uyum tasarrufunuzu hesaplay&#305;n</span></h2>
+  <p class="s-sub"><span data-l="en" class="on">See how much time and money QRegu can save your team.</span><span data-l="tr">QRegu'nun ekibinize ne kadar zaman ve para tasarrufu sa&#287;layabilece&#287;ini g&ouml;r&uuml;n.</span></p>
+
+  <div class="roi-layout">
+    <div class="roi-inputs">
+      <div class="roi-field">
+        <label><span data-l="en" class="on">Compliance team size</span><span data-l="tr">Uyum ekibi b&uuml;y&uuml;kl&uuml;&#287;&uuml;</span></label>
+        <div class="roi-slider-wrap">
+          <input type="range" id="roi-team" min="1" max="50" value="5" class="roi-slider" aria-label="Compliance team size">
+          <span class="roi-value" id="roi-team-val">5</span>
+        </div>
+      </div>
+      <div class="roi-field">
+        <label><span data-l="en" class="on">Hours/week on manual compliance</span><span data-l="tr">Haftal&#305;k manuel uyum saati</span></label>
+        <div class="roi-slider-wrap">
+          <input type="range" id="roi-hours" min="5" max="40" value="15" class="roi-slider" aria-label="Hours per week on manual compliance">
+          <span class="roi-value" id="roi-hours-val">15</span>
+        </div>
+      </div>
+      <div class="roi-field">
+        <label><span data-l="en" class="on">Number of regulators tracked</span><span data-l="tr">&#304;zlenen regulat&ouml;r say&#305;s&#305;</span></label>
+        <div class="roi-slider-wrap">
+          <input type="range" id="roi-regs" min="1" max="20" value="5" class="roi-slider" aria-label="Number of regulators tracked">
+          <span class="roi-value" id="roi-regs-val">5</span>
+        </div>
+      </div>
+      <div class="roi-field">
+        <label><span data-l="en" class="on">Average hourly cost ($)</span><span data-l="tr">Ortalama saat maliyeti ($)</span></label>
+        <div class="roi-slider-wrap">
+          <input type="range" id="roi-cost" min="30" max="150" value="75" step="5" class="roi-slider" aria-label="Average hourly cost in dollars">
+          <span class="roi-value">$<span id="roi-cost-val">75</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="roi-results" aria-live="polite">
+      <div class="roi-result-card">
+        <div class="roi-result-icon">&#x23F1;&#xFE0F;</div>
+        <div class="roi-result-value" id="roi-hours-saved">3,120</div>
+        <div class="roi-result-label"><span data-l="en" class="on">Hours saved / year</span><span data-l="tr">Y&#305;ll&#305;k tasarruf edilen saat</span></div>
+      </div>
+      <div class="roi-result-card highlight">
+        <div class="roi-result-icon">&#x1F4B0;</div>
+        <div class="roi-result-value">$<span id="roi-money-saved">234,000</span></div>
+        <div class="roi-result-label"><span data-l="en" class="on">Annual savings</span><span data-l="tr">Y&#305;ll&#305;k tasarruf</span></div>
+      </div>
+      <div class="roi-result-card">
+        <div class="roi-result-icon">&#x1F4C8;</div>
+        <div class="roi-result-value"><span id="roi-percentage">1,950</span>%</div>
+        <div class="roi-result-label"><span data-l="en" class="on">ROI with QRegu</span><span data-l="tr">QRegu ile ROI</span></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="roi-note"><span data-l="en" class="on">* Based on 80% automation of manual compliance tasks. Actual results may vary.</span><span data-l="tr">* Manuel uyum g&ouml;revlerinin %80 otomasyonuna dayanmaktad&#305;r. Ger&ccedil;ek sonu&ccedil;lar de&#287;i&#351;ebilir.</span></p>
+</div>
+</section>
+
 <!-- PRICING -->
 <section id="pricing">
 <div class="container">
   <div class="eyebrow">Pricing</div>
-  <h2 class="s-title"><span data-l="en" class="on">90% less than legacy tools.</span><span data-l="tr">Eski ara&ccedil;lardan %90 daha ucuz.</span></h2>
-  <p class="s-sub"><span data-l="en" class="on">Traditional RegTech platforms charge $10K&ndash;50K/year. QRegu starts at $99/month and goes live in days.</span><span data-l="tr">Geleneksel RegTech platformları yılda $10K&ndash;50K alır. QRegu $99/ay'dan başlar ve günler içinde devreye alınır.</span></p>
+  <h2 class="s-title"><span data-l="en" class="on">Simple per-seat pricing.</span><span data-l="tr">Basit kullan&#305;c&#305; ba&#351;&#305;na fiyatland&#305;rma.</span></h2>
+  <p class="s-sub"><span data-l="en" class="on">Traditional RegTech platforms charge $10K&ndash;50K/year. QRegu starts at $19/user/month and goes live in days.</span><span data-l="tr">Geleneksel RegTech platformlar&#305; y&#305;lda $10K&ndash;50K al&#305;r. QRegu $19/kullan&#305;c&#305;/ay'dan ba&#351;lar ve g&uuml;nler i&ccedil;inde devreye al&#305;n&#305;r.</span></p>
   <div class="pricing-grid">
     <div class="pc">
       <div class="ptier">Starter</div>
-      <div class="pamount"><sup>$</sup>99</div>
-      <div class="pperiod"><span data-l="en" class="on">per month</span><span data-l="tr">ayl&#305;k</span></div>
-      <ul class="plist"><li><span data-l="en" class="on">Up to 10 users</span><span data-l="tr">10 kullan&#305;c&#305;</span></li><li><span data-l="en" class="on">1 country</span><span data-l="tr">1 &uuml;lke</span></li><li><span data-l="en" class="on">AI summaries</span><span data-l="tr">AI &ouml;zetleri</span></li><li><span data-l="en" class="on">Mobile apps</span><span data-l="tr">Mobil uygulamalar</span></li><li><span data-l="en" class="on">Basic workflows</span><span data-l="tr">Temel i&#351; ak&#305;&#351;lar&#305;</span></li></ul>
+      <div class="pamount"><sup>$</sup>19</div>
+      <div class="pperiod"><span data-l="en" class="on">per user / month</span><span data-l="tr">kullan&#305;c&#305; / ay</span></div>
+      <ul class="plist"><li><span data-l="en" class="on">10 regulators</span><span data-l="tr">10 regulat&ouml;r</span></li><li><span data-l="en" class="on">AI summaries</span><span data-l="tr">AI &ouml;zetleri</span></li><li><span data-l="en" class="on">Mobile apps</span><span data-l="tr">Mobil uygulamalar</span></li><li><span data-l="en" class="on">Basic workflows</span><span data-l="tr">Temel i&#351; ak&#305;&#351;lar&#305;</span></li><li><span data-l="en" class="on">Email support</span><span data-l="tr">E-posta deste&#287;i</span></li></ul>
       <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn outline" target="_blank"><span data-l="en" class="on">Get Started</span><span data-l="tr">Ba&#351;la</span></a>
     </div>
     <div class="pc feat">
       <div class="flabel">Most Popular</div>
       <div class="ptier">Professional</div>
-      <div class="pamount"><sup>$</sup>299</div>
-      <div class="pperiod"><span data-l="en" class="on">per month</span><span data-l="tr">ayl&#305;k</span></div>
-      <ul class="plist"><li><span data-l="en" class="on">Up to 50 users</span><span data-l="tr">50 kullan&#305;c&#305;</span></li><li><span data-l="en" class="on">3 countries</span><span data-l="tr">3 &uuml;lke</span></li><li><span data-l="en" class="on">AI impact analysis</span><span data-l="tr">AI etki analizi</span></li><li><span data-l="en" class="on">Full workflow automation</span><span data-l="tr">Tam i&#351; ak&#305;&#351;&#305; otomasyonu</span></li><li><span data-l="en" class="on">B2B dashboard</span><span data-l="tr">B2B dashboard</span></li><li><span data-l="en" class="on">Priority support</span><span data-l="tr">&Ouml;ncelikli destek</span></li></ul>
+      <div class="pamount"><sup>$</sup>49</div>
+      <div class="pperiod"><span data-l="en" class="on">per user / month</span><span data-l="tr">kullan&#305;c&#305; / ay</span></div>
+      <ul class="plist"><li><span data-l="en" class="on">40 regulators</span><span data-l="tr">40 regulat&ouml;r</span></li><li><span data-l="en" class="on">AI impact analysis</span><span data-l="tr">AI etki analizi</span></li><li><span data-l="en" class="on">Full workflow automation</span><span data-l="tr">Tam i&#351; ak&#305;&#351;&#305; otomasyonu</span></li><li><span data-l="en" class="on">API access</span><span data-l="tr">API eri&#351;imi</span></li><li><span data-l="en" class="on">Priority support</span><span data-l="tr">&Ouml;ncelikli destek</span></li></ul>
       <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn fill" target="_blank"><span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
     </div>
     <div class="pc">
       <div class="ptier">Enterprise</div>
       <div class="pamount" style="font-size:32px;padding-top:6px">Custom</div>
       <div class="pperiod"><span data-l="en" class="on">tailored pricing</span><span data-l="tr">&ouml;zel fiyatland&#305;rma</span></div>
-      <ul class="plist"><li><span data-l="en" class="on">Unlimited users</span><span data-l="tr">S&#305;n&#305;rs&#305;z kullan&#305;c&#305;</span></li><li><span data-l="en" class="on">All countries</span><span data-l="tr">T&uuml;m &uuml;lkeler</span></li><li><span data-l="en" class="on">White-label option</span><span data-l="tr">White-label</span></li><li><span data-l="en" class="on">On-premise deploy</span><span data-l="tr">On-premise</span></li><li><span data-l="en" class="on">SLA guarantee</span><span data-l="tr">SLA garantisi</span></li></ul>
+      <ul class="plist"><li><span data-l="en" class="on">Unlimited regulators</span><span data-l="tr">S&#305;n&#305;rs&#305;z regulat&ouml;r</span></li><li><span data-l="en" class="on">SSO / SAML</span><span data-l="tr">SSO / SAML</span></li><li><span data-l="en" class="on">On-premise deploy</span><span data-l="tr">On-premise</span></li><li><span data-l="en" class="on">Dedicated CSM</span><span data-l="tr">&Ouml;zel m&uuml;&#351;teri y&ouml;neticisi</span></li><li><span data-l="en" class="on">SLA guarantee</span><span data-l="tr">SLA garantisi</span></li></ul>
       <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn outline" target="_blank"><span data-l="en" class="on">Contact Sales</span><span data-l="tr">Sat&#305;&#351; Ekibi</span></a>
     </div>
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="compare-table">
+    <table>
+      <thead>
+        <tr>
+          <th><span data-l="en" class="on">Feature</span><span data-l="tr">Özellik</span></th>
+          <th>Starter<br><small>$19/user</small></th>
+          <th>Professional<br><small>$49/user</small></th>
+          <th>Enterprise<br><small>Custom</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span data-l="en" class="on">Regulators</span><span data-l="tr">Regulatör</span></td>
+          <td>10</td>
+          <td>40</td>
+          <td><span data-l="en" class="on">Unlimited</span><span data-l="tr">Sınırsız</span></td>
+        </tr>
+        <tr>
+          <td><span data-l="en" class="on">AI Summaries</span><span data-l="tr">AI Özetleri</span></td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td><span data-l="en" class="on">AI Impact Analysis</span><span data-l="tr">AI Etki Analizi</span></td>
+          <td class="cross">—</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td><span data-l="en" class="on">Mobile Apps</span><span data-l="tr">Mobil Uygulamalar</span></td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td><span data-l="en" class="on">Workflow Automation</span><span data-l="tr">İş Akışı Otomasyonu</span></td>
+          <td><span data-l="en" class="on">Basic</span><span data-l="tr">Temel</span></td>
+          <td><span data-l="en" class="on">Advanced</span><span data-l="tr">Gelişmiş</span></td>
+          <td><span data-l="en" class="on">Custom</span><span data-l="tr">Özel</span></td>
+        </tr>
+        <tr>
+          <td><span data-l="en" class="on">API Access</span><span data-l="tr">API Erişimi</span></td>
+          <td class="cross">—</td>
+          <td class="check">✓</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>SSO / SAML</td>
+          <td class="cross">—</td>
+          <td class="cross">—</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td><span data-l="en" class="on">On-premise</span><span data-l="tr">On-premise</span></td>
+          <td class="cross">—</td>
+          <td class="cross">—</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td><span data-l="en" class="on">Dedicated CSM</span><span data-l="tr">Özel Müşteri Yöneticisi</span></td>
+          <td class="cross">—</td>
+          <td class="cross">—</td>
+          <td class="check">✓</td>
+        </tr>
+        <tr>
+          <td>SLA</td>
+          <td>99%</td>
+          <td>99.9%</td>
+          <td>99.99%</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 </section>
@@ -562,7 +533,7 @@ section{padding:96px 48px}
       <div class="faq-category">
         <div class="faq-cat-title"><span data-l="en" class="on">General</span><span data-l="tr">Genel</span></div>
         <div class="faq-item">
-          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span data-l="en" class="on">What is QRegu?</span><span data-l="tr">QRegu nedir?</span></div>
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')" role="button" aria-expanded="false" tabindex="0"><span data-l="en" class="on">What is QRegu?</span><span data-l="tr">QRegu nedir?</span></div>
           <div class="faq-a"><span data-l="en" class="on">QRegu is an AI-powered regulatory intelligence platform that automatically monitors regulations, analyzes their impact, and routes tasks to the right teams. It helps financial institutions stay compliant with less manual effort.</span><span data-l="tr">QRegu, mevzuatları otomatik izleyen, etkilerini analiz eden ve görevleri doğru ekiplere yönlendiren AI destekli bir regülatif istihbarat platformudur. Finansal kuruluşların daha az manuel eforla uyumlu kalmasına yardımcı olur.</span></div>
         </div>
         <div class="faq-item">
@@ -636,11 +607,11 @@ section{padding:96px 48px}
   </div>
 </div>
 
-<footer>
+<footer role="contentinfo">
   <div class="fi">
     <div class="flogo"><img id="footer-logo" src="" alt="QRegu">QRegu</div>
     <span class="fcopy">&copy; 2026 QRegu by Qberx Technology</span>
-    <div class="flinks"><a href="mailto:info@qberx.com">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms-of-service.html">Terms</a><a href="https://qregu-admin-dev.web.app" target="_blank">Admin Panel</a></div>
+    <div class="flinks"><a href="/contact.html">Contact</a><a href="/privacy-policy.html">Privacy Policy</a><a href="/terms-of-service.html">Terms</a><a href="https://qregu-admin-dev.web.app" target="_blank">Admin Panel</a></div>
   </div>
 </footer>
 
@@ -661,6 +632,43 @@ function sw(name,url){
   document.getElementById('burl').textContent=screens[name].url;
 }
 
+// ROI Calculator
+function calculateROI(){
+  var team = parseInt(document.getElementById('roi-team').value);
+  var hours = parseInt(document.getElementById('roi-hours').value);
+  var regs = parseInt(document.getElementById('roi-regs').value);
+  var cost = parseInt(document.getElementById('roi-cost').value);
+
+  // Update display values
+  document.getElementById('roi-team-val').textContent = team;
+  document.getElementById('roi-hours-val').textContent = hours;
+  document.getElementById('roi-regs-val').textContent = regs;
+  document.getElementById('roi-cost-val').textContent = cost;
+
+  // Calculate savings (80% automation)
+  var weeklyHours = team * hours;
+  var yearlyHours = weeklyHours * 52;
+  var savedHours = Math.round(yearlyHours * 0.8);
+  var savedMoney = savedHours * cost;
+
+  // QRegu cost (assume Professional plan)
+  var qreguCost = 999 * 12;
+  var roi = Math.round(((savedMoney - qreguCost) / qreguCost) * 100);
+
+  // Update results
+  document.getElementById('roi-hours-saved').textContent = savedHours.toLocaleString();
+  document.getElementById('roi-money-saved').textContent = savedMoney.toLocaleString();
+  document.getElementById('roi-percentage').textContent = roi.toLocaleString();
+}
+
+function initROI(){
+  var sliders = document.querySelectorAll('.roi-slider');
+  sliders.forEach(function(s){
+    s.addEventListener('input', calculateROI);
+  });
+  calculateROI();
+}
+
 function initPage(){
   document.getElementById('nav-logo').src='images/logo.png';
   document.getElementById('footer-logo').src='images/logo.png';
@@ -673,7 +681,9 @@ function initPage(){
   var imgs=['images/mobile-home.png','images/mobile-menu.png','images/mobile-task.png'];
   var ws=['180px','200px','180px'];
   var mt=['0px','0px','-20px'];
-  ph.innerHTML=imgs.map(function(s,i){return '<div class="phone" style="width:'+ws[i]+';margin-top:'+mt[i]+'"><img src="'+s+'" alt="QRegu mobile"></div>';}).join('');
+  ph.innerHTML=imgs.map(function(s,i){return '<div class="phone" style="width:'+ws[i]+';margin-top:'+mt[i]+'"><img src="'+s+'" alt="QRegu mobile" loading="lazy"></div>';}).join('');
+  // ROI calculator
+  initROI();
 }
 initPage();
 </script>
