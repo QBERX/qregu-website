@@ -99,7 +99,7 @@
       <button class="lbtn on" id="ben" onclick="setLang('en')" aria-label="Switch to English">EN</button>
       <button class="lbtn" id="btr" onclick="setLang('tr')" aria-label="Türkçe'ye geç">TR</button>
     </div>
-    <a href="https://calendly.com/berker-yenal-qberx/30min" target="_blank" class="btn-cta">
+    <a href="#" onclick="openDemoPopup();return false;" class="btn-cta">
       &#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span>
     </a>
     <button class="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Menu">
@@ -119,11 +119,11 @@
 <!-- HERO -->
 <div style="max-width:1280px;margin:0 auto;padding:116px 48px 72px;display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:center" class="hero-wrap">
   <div>
-    <div class="hero-badge"><div class="live-dot"></div><span data-l="en" class="on">TR + UK live &mdash; SEC &amp; FINRA coming</span><span data-l="tr">TR + UK canl&#305; &mdash; SEC &amp; FINRA geliyor</span></div>
+    <div class="hero-badge"><div class="live-dot"></div><span data-l="en" class="on">TR + UK + US live &mdash; expanding globally</span><span data-l="tr">TR + UK + US canl&#305; &mdash; global geni&#351;leme</span></div>
     <h1><span data-l="en" class="on">Regulatory intelligence,<br><em>automated end-to-end</em></span><span data-l="tr">Mevzuat zekasi,<br><em>u&ccedil;tan uca otomatik</em></span></h1>
     <p class="hero-sub"><span data-l="en" class="on">QRegu monitors regulations across Banking, Insurance, Fintech and Capital Markets. AI reads every update, scores the impact, and routes tasks to the right team &mdash; automatically.</span><span data-l="tr">QRegu Bankacılık, Sigorta, Fintech ve Sermaye Piyasaları genelinde mevzuatları izler. AI her güncellemeyi okur, etkiyi değerlendirir ve görevleri otomatik yönlendirir.</span></p>
     <div class="hero-btns">
-      <a href="https://calendly.com/berker-yenal-qberx/30min" class="btn-primary" target="_blank">&#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
+      <a href="#" onclick="openDemoPopup();return false;" class="btn-primary">&#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
       <a href="https://qregu-admin-dev.web.app" class="btn-ghost" target="_blank"><span data-l="en" class="on">Live Admin Panel &rarr;</span><span data-l="tr">Canl&#305; Admin &rarr;</span></a>
     </div>
     <div class="hero-stats">
@@ -150,25 +150,6 @@
   </div>
 </div>
 
-<!-- LOGOS BAR -->
-<div style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 48px">
-  <div style="text-align:center;font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px">
-    <span data-l="en" class="on">Live regulatory monitoring</span><span data-l="tr">Canl&#305; mevzuat izleme</span>
-  </div>
-  <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap">
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>BDDK</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>SPK</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>TCMB</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>MASAK</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>KAP</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>FCA</span>
-    <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted)"><span style="width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block"></span>OCC</span>
-    <span style="font-size:13px;font-weight:700;color:#C4C9D4">SEC &rarr;</span>
-    <span style="font-size:13px;font-weight:700;color:#C4C9D4">FINRA &rarr;</span>
-    <span style="font-size:13px;font-weight:700;color:#C4C9D4">BaFin &rarr;</span>
-  </div>
-</div>
-
 <!-- SECTORS -->
 <div class="sectors-section" id="sectors">
   <div class="container">
@@ -179,8 +160,8 @@
       <a href="/use-cases/banking.html" class="sector-card">
         <div class="sector-icon">&#x1F3E6;</div>
         <div class="sector-title"><span data-l="en" class="on">Banking</span><span data-l="tr">Bankac&#305;l&#305;k</span></div>
-        <p class="sector-desc"><span data-l="en" class="on">Capital adequacy, AML/KYC, consumer credit, payment systems, fee &amp; tariff regulations.</span><span data-l="tr">Sermaye yeterliliği, AML/KYC, tüketici kredisi, ödeme sistemleri, ücret ve tarife düzenlemeleri.</span></p>
-        <div class="sector-regs"><span class="reg-chip">BDDK</span><span class="reg-chip">TCMB</span><span class="reg-chip">MASAK</span><span class="reg-chip">OCC</span></div>
+        <p class="sector-desc"><span data-l="en" class="on">Capital adequacy, AML/KYC, BSA compliance, consumer credit, Dodd-Frank, fee regulations.</span><span data-l="tr">Sermaye yeterlili&#287;i, AML/KYC, BSA uyumu, t&uuml;ketici kredisi, Dodd-Frank, &uuml;cret d&uuml;zenlemeleri.</span></p>
+        <div class="sector-regs"><span class="reg-chip">BDDK</span><span class="reg-chip">TCMB</span><span class="reg-chip">OCC</span><span class="reg-chip">FDIC</span><span class="reg-chip">CFPB</span></div>
       </a>
       <a href="/use-cases/capital-markets.html" class="sector-card">
         <div class="sector-icon">&#x1F4C8;</div>
@@ -246,6 +227,40 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+</section>
+
+<!-- LLM POWERED -->
+<section class="llm-section" id="llm">
+<div class="container">
+  <div class="eyebrow"><span data-l="en" class="on">AI-Powered Analysis</span><span data-l="tr">AI Destekli Analiz</span></div>
+  <h2 class="s-title"><span data-l="en" class="on">AI that speaks<br>your regulatory language</span><span data-l="tr">Mevzuat dilinizi<br>konu&#351;an AI</span></h2>
+  <p class="s-sub"><span data-l="en" class="on">Our AI understands banking, insurance, and capital markets regulations deeply. Not generic summaries &mdash; sector-specific insights that matter.</span><span data-l="tr">AI'&#305;m&#305;z bankac&#305;l&#305;k, sigorta ve sermaye piyasalar&#305; mevzuatlar&#305;n&#305; derinlemesine anlar. Genel &ouml;zetler de&#287;il &mdash; &ouml;nemli sekt&ouml;re &ouml;zg&uuml; i&ccedil;g&ouml;r&uuml;ler.</span></p>
+  <div class="llm-grid">
+    <div class="llm-card">
+      <div class="llm-icon">&#x1F4DD;</div>
+      <h3><span data-l="en" class="on">Instant Summaries</span><span data-l="tr">Anl&#305;k &Ouml;zetler</span></h3>
+      <p><span data-l="en" class="on">50-page regulations become 2-paragraph summaries. Key obligations, deadlines, and who needs to act &mdash; in seconds.</span><span data-l="tr">50 sayfalık mevzuatlar 2 paragraflık özete dönüşür. Temel yükümlülükler, son tarihler ve kimin aksiyon alması gerektiği &mdash; saniyeler içinde.</span></p>
+    </div>
+    <div class="llm-card">
+      <div class="llm-icon">&#x1F3DB;&#xFE0F;</div>
+      <h3><span data-l="en" class="on">Team-Level Routing</span><span data-l="tr">Ekip Bazl&#305; Y&ouml;nlendirme</span></h3>
+      <p><span data-l="en" class="on">AI knows which department handles what. Legal gets contract changes, IT gets system updates, Operations gets process changes &mdash; automatically.</span><span data-l="tr">AI hangi departmanın neyi ele aldığını bilir. Hukuk sözleşme değişikliklerini, BT sistem güncellemelerini, Operasyon süreç değişikliklerini alır &mdash; otomatik.</span></p>
+    </div>
+    <div class="llm-card">
+      <div class="llm-icon">&#x1F310;</div>
+      <h3><span data-l="en" class="on">Any Language</span><span data-l="tr">Her Dilde</span></h3>
+      <p><span data-l="en" class="on">Turkish, English, German &mdash; doesn't matter. AI reads in the source language and delivers insights in your preferred language.</span><span data-l="tr">Türkçe, İngilizce, Almanca &mdash; fark etmez. AI kaynak dilde okur ve tercih ettiğiniz dilde içgörüler sunar.</span></p>
+    </div>
+    <div class="llm-card">
+      <div class="llm-icon">&#x1F4AC;</div>
+      <h3><span data-l="en" class="on">Ask Your Regulations</span><span data-l="tr">Mevzuatlar&#305;n&#305;za Sorun</span></h3>
+      <p><span data-l="en" class="on">Chat with an AI trained on your regulations. Ask questions in plain language, get answers with source references.</span><span data-l="tr">Mevzuatlar&#305;n&#305;zda e&#287;itilmi&#351; AI ile sohbet edin. Sade dilde sorun, kaynak referanslar&#305;yla cevap al&#305;n.</span></p>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:32px">
+    <a href="/features/ai-analysis.html" class="btn-ghost"><span data-l="en" class="on">See AI in action &rarr;</span><span data-l="tr">AI'&#305; i&#351; ba&#351;&#305;nda g&ouml;r&uuml;n &rarr;</span></a>
   </div>
 </div>
 </section>
@@ -424,7 +439,7 @@
       <div class="pamount"><sup>$</sup>19</div>
       <div class="pperiod"><span data-l="en" class="on">per user / month</span><span data-l="tr">kullan&#305;c&#305; / ay</span></div>
       <ul class="plist"><li><span data-l="en" class="on">10 regulators</span><span data-l="tr">10 regulat&ouml;r</span></li><li><span data-l="en" class="on">AI summaries</span><span data-l="tr">AI &ouml;zetleri</span></li><li><span data-l="en" class="on">Mobile apps</span><span data-l="tr">Mobil uygulamalar</span></li><li><span data-l="en" class="on">Basic workflows</span><span data-l="tr">Temel i&#351; ak&#305;&#351;lar&#305;</span></li><li><span data-l="en" class="on">Email support</span><span data-l="tr">E-posta deste&#287;i</span></li></ul>
-      <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn outline" target="_blank"><span data-l="en" class="on">Get Started</span><span data-l="tr">Ba&#351;la</span></a>
+      <a href="#" onclick="openDemoPopup();return false;" class="pbtn outline"><span data-l="en" class="on">Get Started</span><span data-l="tr">Ba&#351;la</span></a>
     </div>
     <div class="pc feat">
       <div class="flabel">Most Popular</div>
@@ -432,14 +447,14 @@
       <div class="pamount"><sup>$</sup>49</div>
       <div class="pperiod"><span data-l="en" class="on">per user / month</span><span data-l="tr">kullan&#305;c&#305; / ay</span></div>
       <ul class="plist"><li><span data-l="en" class="on">40 regulators</span><span data-l="tr">40 regulat&ouml;r</span></li><li><span data-l="en" class="on">AI impact analysis</span><span data-l="tr">AI etki analizi</span></li><li><span data-l="en" class="on">Full workflow automation</span><span data-l="tr">Tam i&#351; ak&#305;&#351;&#305; otomasyonu</span></li><li><span data-l="en" class="on">API access</span><span data-l="tr">API eri&#351;imi</span></li><li><span data-l="en" class="on">Priority support</span><span data-l="tr">&Ouml;ncelikli destek</span></li></ul>
-      <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn fill" target="_blank"><span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
+      <a href="#" onclick="openDemoPopup();return false;" class="pbtn fill"><span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
     </div>
     <div class="pc">
       <div class="ptier">Enterprise</div>
       <div class="pamount" style="font-size:32px;padding-top:6px">Custom</div>
       <div class="pperiod"><span data-l="en" class="on">tailored pricing</span><span data-l="tr">&ouml;zel fiyatland&#305;rma</span></div>
       <ul class="plist"><li><span data-l="en" class="on">Unlimited regulators</span><span data-l="tr">S&#305;n&#305;rs&#305;z regulat&ouml;r</span></li><li><span data-l="en" class="on">SSO / SAML</span><span data-l="tr">SSO / SAML</span></li><li><span data-l="en" class="on">On-premise deploy</span><span data-l="tr">On-premise</span></li><li><span data-l="en" class="on">Dedicated CSM</span><span data-l="tr">&Ouml;zel m&uuml;&#351;teri y&ouml;neticisi</span></li><li><span data-l="en" class="on">SLA guarantee</span><span data-l="tr">SLA garantisi</span></li></ul>
-      <a href="https://calendly.com/berker-yenal-qberx/30min" class="pbtn outline" target="_blank"><span data-l="en" class="on">Contact Sales</span><span data-l="tr">Sat&#305;&#351; Ekibi</span></a>
+      <a href="#" onclick="openDemoPopup();return false;" class="pbtn outline"><span data-l="en" class="on">Contact Sales</span><span data-l="tr">Sat&#305;&#351; Ekibi</span></a>
     </div>
   </div>
 
@@ -602,7 +617,7 @@
     <h2><span data-l="en" class="on">Ready to see QRegu live?</span><span data-l="tr">QRegu'yu canl&#305; g&ouml;rmeye haz&#305;r m&#305;s&#305;n&#305;z?</span></h2>
     <p class="cta-sub"><span data-l="en" class="on">Book a 30-minute demo. We'll show your regulators being monitored live.</span><span data-l="tr">30 dakikalık demo rezervasyonu yapın. Regulatörlerinizin canlı izlendiğini gösterelim.</span></p>
     <div class="cta-btns">
-      <a href="https://calendly.com/berker-yenal-qberx/30min" class="btn-primary" target="_blank" style="background:white;color:var(--p);font-size:15px;padding:14px 28px">&#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
+      <a href="#" onclick="openDemoPopup();return false;" class="btn-primary" style="background:white;color:var(--p);font-size:15px;padding:14px 28px">&#x1F4C5; <span data-l="en" class="on">Book a Demo</span><span data-l="tr">Demo Talep Et</span></a>
       <a href="https://qregu-admin-dev.web.app" class="btn-ghost" target="_blank" style="background:rgba(255,255,255,.12);color:white;border-color:rgba(255,255,255,.3);font-size:15px;padding:14px 22px"><span data-l="en" class="on">Live Admin Panel &rarr;</span><span data-l="tr">Canl&#305; Admin &rarr;</span></a>
     </div>
   </div>
