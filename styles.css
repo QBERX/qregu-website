@@ -320,20 +320,119 @@ section{padding:96px 48px}
 @media(max-width:768px){
   .nav-links{display:none}
   .hamburger{display:flex}
-  .nav{padding:0 20px}
-  .btn-cta span{display:none}
-  .hero-wrap{grid-template-columns:1fr!important;padding:100px 20px 48px!important;gap:32px!important}
-  .hero-btns{flex-direction:column}
-  .hero-stats{flex-wrap:wrap;gap:20px}
-  .sectors-grid{grid-template-columns:1fr 1fr}
-  .pricing-grid{grid-template-columns:1fr}
+  .nav{padding:0 12px;height:48px}
+  .nav-logo{font-size:15px;gap:6px}
+  .nav-logo img{width:24px;height:24px}
+  .btn-cta{padding:6px 10px;font-size:12px}
+  .btn-cta span,.btn-cta [data-l]{display:none!important}
+  .lang-pill{transform:scale(.85)}
+  .lbtn{min-height:28px;min-width:28px;padding:4px 10px;font-size:12px}
+  .nav-right{gap:6px}
+  .hamburger{min-width:36px;min-height:36px;padding:6px}
+  .hamburger span{width:18px}
+  .mobile-menu{top:48px}
+
+  /* Hero */
+  .hero-wrap{grid-template-columns:1fr!important;padding:64px 16px 40px!important;gap:24px!important}
+  h1{font-size:28px;letter-spacing:-.02em;margin-bottom:14px}
+  .hero-badge{font-size:11px;padding:5px 12px;margin-bottom:16px}
+  .hero-sub{font-size:15px;line-height:1.65;margin-bottom:24px}
+  .hero-btns{flex-direction:column;gap:10px}
+  .btn-primary,.btn-ghost{width:100%;justify-content:center;padding:14px 20px}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:24px}
+  .sn{font-size:20px}
+
+  /* Browser/dashboard visual */
+  .browser{border-radius:var(--r)}
+  .bbar{padding:8px 12px}
+  .burl{font-size:11px;padding:3px 8px}
+  .db-tabs{gap:2px;margin-bottom:8px}
+  .dbt{font-size:11px;padding:5px 8px}
+
+  /* Sections */
+  section{padding:48px 16px;overflow-x:hidden}
+  .container{padding:0;overflow-x:hidden}
+  .s-title{font-size:22px;margin-bottom:10px}
+  .s-sub{font-size:14px}
+  .eyebrow{font-size:11px;margin-bottom:8px}
+
+  /* Sectors */
+  .sectors-section{padding:48px 16px}
+  .sectors-grid{grid-template-columns:1fr;gap:1px;margin-top:32px}
+  .sector-card{padding:24px 20px}
+  .sector-icon{font-size:24px;margin-bottom:12px}
+  .sector-title{font-size:15px}
+  .sector-desc{font-size:12px}
+
+  /* Impact */
+  .impact-layout{gap:32px;margin-top:32px}
+  .impact-screens{overflow:hidden}
+  .impact-img{max-width:100%}
+  .ip{padding:12px}
+  .ip-icon{width:36px;height:36px;font-size:16px}
+  .ip-title{font-size:14px}
+  .ip-desc{font-size:13px}
+
+  /* Discovery */
+  .discovery-section{padding:48px 16px}
+  .discovery-layout{gap:32px;margin-top:32px}
+  .ds-body{padding:0 0 20px 12px}
+  .ds-title{font-size:14px}
+  .ds-desc{font-size:12px}
+
+  /* Workflow */
+  .workflow-layout{gap:32px;margin-top:32px}
+  .wf-img{max-width:100%}
+  .wfs{padding:14px}
+  .wft{font-size:13px}
+  .wfd{font-size:12px}
+
+  /* Mobile app section */
+  .mobile-layout{gap:32px;margin-top:32px}
+  .phones{flex-direction:column;align-items:center;gap:16px}
+  .phones .phone{width:200px;border-radius:24px;border-width:4px}
+  .mobile-points{overflow:hidden}
+  .mp{padding:12px;overflow:hidden}
+  .mpt{font-size:13px}
+  .mpd{font-size:12px;word-wrap:break-word;overflow-wrap:break-word}
+
+  /* Risk/ROI */
+  .risk-section{padding:48px 16px}
   .risk-grid{grid-template-columns:1fr}
-  .impact-wrap{flex-direction:column}
-  .container{padding:48px 20px}
-  .cta-wrap{padding:64px 20px}
-  .trust-badges{gap:24px}
-  .trust-badge{font-size:13px}
-  .faq-grid{grid-template-columns:1fr}
+  .risk-card{padding:24px 20px}
+  .risk-num{font-size:32px}
+  .risk-desc{font-size:13px}
+
+  /* Trust */
+  .trust-section{padding:32px 16px}
+  .trust-badges{gap:16px}
+  .trust-badge{font-size:12px;padding:8px 12px}
+  .trust-icon{font-size:20px}
+
+  /* Pricing */
+  .pricing-grid{grid-template-columns:1fr;max-width:100%}
+  .pc{padding:24px 20px}
+  .pamount{font-size:32px}
+  .plist li{font-size:13px;padding:7px 0}
+  .compare-table{margin-top:32px}
+
+  /* FAQ */
+  .faq-section{padding:48px 16px}
+  .faq-grid{grid-template-columns:1fr;gap:24px;margin-top:32px}
+  .faq-q{padding:14px 16px;font-size:13px}
+  .faq-a{font-size:12px}
+
+  /* CTA */
+  .cta-wrap{padding:48px 16px}
+  .cta-wrap h2{font-size:24px}
+  .cta-sub{font-size:15px;margin-bottom:24px}
+  .cta-btns{flex-direction:column;align-items:center;gap:10px}
+  .cta-btns .btn-primary,.cta-btns .btn-ghost{width:100%;max-width:320px;justify-content:center}
+
+  /* Footer */
+  footer{padding:24px 16px}
+  .fi{flex-direction:column;text-align:center;gap:12px}
+  .flinks{gap:16px}
 }
 
 /* ACCESSIBILITY */
